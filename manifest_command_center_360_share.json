@@ -1,0 +1,28 @@
+{
+  "run": "2026-07-20T15:35:03",
+  "project": "/Users/ChristianJoelParedes/Desktop/Command Center 360",
+  "backup_original": "/Users/ChristianJoelParedes/Documents/Carpetas creadas por Navi/Navi - Reportes y Archivos de Trabajo/Command Center 360 - QA y Publicacion/Versiones anteriores y temporales/Presentacion_Command_Center_360_IA_Empresarial_backup_20260720_153503.pptx",
+  "final_files": {
+    "app": "/Users/ChristianJoelParedes/Desktop/Command Center 360/index.html",
+    "presentation": "/Users/ChristianJoelParedes/Desktop/Command Center 360/Presentacion_Command_Center_360_IA_Empresarial.pptx",
+    "readme": "/Users/ChristianJoelParedes/Desktop/Command Center 360/README.md"
+  },
+  "ppt": {
+    "slides": 12,
+    "size": 54665,
+    "old_brand_terms_found": []
+  },
+  "html": {
+    "size": 25571,
+    "ready_flag": true
+  },
+  "issues": [
+    "Bad placeholder/old brand found: TODO"
+  ],
+  "human_audit_summary": [
+    "Original deck was repurposed from IA Inmobiliaria and had wrong footer/branding.",
+    "Original first-slide composition had decorative vertical lines competing with content and investor story was not Command Center-specific.",
+    "Rebuilt deck to 12 cleaner slides around product, problem, ROI, pilot, business model, moat and next step.",
+    "Rebuilt app CSS to fix metric overflow and improve responsive sharing via public URL."
+  ]
+}
