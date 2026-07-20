@@ -24,5 +24,18 @@
     "Original first-slide composition had decorative vertical lines competing with content and investor story was not Command Center-specific.",
     "Rebuilt deck to 12 cleaner slides around product, problem, ROI, pilot, business model, moat and next step.",
     "Rebuilt app CSS to fix metric overflow and improve responsive sharing via public URL."
-  ]
+  ],
+  "public_links": {
+    "app_github_pages": "https://navi-cj.github.io/command-center-360/",
+    "presentation_github_pages": "https://navi-cj.github.io/command-center-360/Presentacion_Command_Center_360_IA_Empresarial.pptx"
+  },
+  "github_pages_final": {
+    "app_url": "https://navi-cj.github.io/command-center-360/",
+    "presentation_url": "https://navi-cj.github.io/command-center-360/Presentacion_Command_Center_360_IA_Empresarial.pptx",
+    "app_status": "200",
+    "app_content_type": "text/html; charset=utf-8",
+    "ppt_status": "200",
+    "verified": true,
+    "checked_at": "2026-07-20T16:11:17"
+  }
 }
