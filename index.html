@@ -909,7 +909,9 @@
     .nav { gap: 4px; max-width: 100%; }
     .nav button { padding: 9px clamp(9px, .9vw, 14px); font-size: clamp(11px, .98vw, 13px); }
     .top-actions { min-width: 0; }
-    .industry-select { min-width: 0; width: min(295px, 23vw); }
+    .example-select-wrap { display: grid; gap: 3px; min-width: 0; }
+    .example-label { color: var(--muted); font-size: 9px; line-height: 1; text-transform: uppercase; letter-spacing: .16em; font-weight: 900; padding-left: 2px; }
+    .industry-select { min-width: 0; width: min(295px, 23vw); height: 38px; }
     .pill { padding: 8px 10px; }
     .org-chart { min-width: 0; width: 100%; }
     .org-row.areas { max-width: 100%; display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; align-items: stretch; }
@@ -966,23 +968,28 @@
       </div>
 
       <nav class="nav" aria-label="Navegación principal">
-        <button class="nav-btn active" data-view="org">Organigrama vivo</button>
-        <button class="nav-btn" data-view="dashboard">Dashboard CEO</button>
-        <button class="nav-btn" data-view="areas">Áreas</button>
-        <button class="nav-btn" data-view="diagnosis">Diagnóstico</button>
-        <button class="nav-btn" data-view="roi">ROI / Piloto</button>
+        <button class="nav-btn active" data-view="org" data-help="Muestra el mapa principal: CEO, Subdirector, áreas, estados y alertas para explicar la empresa completa en una sola pantalla.">Organigrama vivo</button>
+        <button class="nav-btn" data-view="dashboard" data-help="Abre la vista del CEO con KPIs, decisiones pendientes, mapa de riesgo y lectura ejecutiva diaria.">Dashboard CEO</button>
+        <button class="nav-btn" data-view="areas" data-help="Abre el diagnóstico por departamento: puestos sugeridos, alertas, automatizaciones y forma de vender cada área.">Áreas</button>
+        <button class="nav-btn" data-view="diagnosis" data-help="Simula un diagnóstico rápido de madurez: preguntas, score, riesgos y prioridades para proponer el piloto.">Diagnóstico</button>
+        <button class="nav-btn" data-view="roi" data-help="Calcula el caso económico del piloto: monto impactable, mejora esperada, payback y ruta 30/60/90.">ROI / Piloto</button>
       </nav>
 
       <div class="top-actions">
-        <select id="industrySelect" class="industry-select" aria-label="Seleccionar industria">
-          <option value="general">Empresa general</option>
-          <option value="distribuidora">Distribuidora / Comercializadora</option>
-          <option value="constructora">Constructora / Servicios técnicos</option>
-          <option value="restaurante">Restaurante / Grupo gastronómico</option>
-          <option value="clinica">Clínica / Salud privada</option>
-          <option value="agencia">Agencia / Servicios profesionales</option>
-          <option value="musica">Música / Management artístico</option>
-        </select>
+        <div class="example-select-wrap">
+          <div class="example-label">Ejemplos aterrizados</div>
+          <select id="industrySelect" class="industry-select" aria-label="Seleccionar industria">
+            <option value="general">Empresa general</option>
+            <option value="herrero">Proveedor del Herrero</option>
+            <option value="fivi">FIVI Hermosillo</option>
+            <option value="distribuidora">Distribuidora / Comercializadora</option>
+            <option value="constructora">Constructora / Servicios técnicos</option>
+            <option value="restaurante">Restaurante / Grupo gastronómico</option>
+            <option value="clinica">Clínica / Salud privada</option>
+            <option value="agencia">Agencia / Servicios profesionales</option>
+            <option value="musica">Música / Management artístico</option>
+          </select>
+        </div>
         <div class="pill"><span class="pulse-dot"></span> Demo vivo</div>
       </div>
     </header>
@@ -1006,7 +1013,7 @@
               <div class="org-stage" aria-label="Organigrama interactivo">
                 <div class="org-chart" id="orgChart">
                   <div class="org-row executive">
-                    <button class="node ceo" data-node="ceo" data-action="dashboard" aria-label="Entrar al centro de control del CEO">
+                    <button class="node ceo" data-node="ceo" data-action="dashboard" aria-label="Entrar al centro de control del CEO" data-help="Entrar al centro de control del CEO: KPIs, alertas, riesgos y decisiones pendientes del dueño.">
                       <div class="node-head"><span class="node-type">Entrada principal</span><span class="status warn">Atención</span></div>
                       <h3>CEO / Director / Dueño</h3>
                       <p>Centro de Control Ejecutivo: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.</p>
@@ -1015,7 +1022,7 @@
                   </div>
                   <div class="connector"></div>
                   <div class="org-row executive">
-                    <button class="node gm" data-node="gerencia" data-area="Gerencia General">
+                    <button class="node gm" data-node="gerencia" data-area="Gerencia General" data-help="Muestra la capa de coordinación: convierte prioridades del director en ejecución diaria y seguimiento por área.">
                       <div class="node-head"><span class="node-type">Coordinación</span><span class="status">Operando</span></div>
                       <h3>Subdirector / Gerente General</h3>
                       <p>Aterriza prioridades del director, coordina áreas y convierte alertas en ejecución diaria.</p>
@@ -1054,8 +1061,8 @@
               </div>
 
               <div class="cta-row">
-                <button class="primary-btn" id="openDashboardBtn">Entrar como CEO</button>
-                <button class="ghost-btn" id="showDiagnosisBtn">Ver diagnóstico</button>
+                <button class="primary-btn" id="openDashboardBtn" data-help="Abre el Dashboard CEO: una vista ejecutiva para ver KPIs, alertas, decisiones pendientes y mapa de riesgo.">Entrar como CEO</button>
+                <button class="ghost-btn" id="showDiagnosisBtn" data-help="Abre el diagnóstico de madurez: preguntas rápidas, score operativo y ruta para proponer el piloto.">Ver diagnóstico</button>
               </div>
             </div>
           </aside>
@@ -1080,7 +1087,7 @@
             <div class="dashboard-card">
               <div class="card-head">
                 <div><h2>Pulso por área</h2><p>Estado ejecutivo de cada departamento. El director identifica dónde mirar primero.</p></div>
-                <button class="ghost-btn" data-view-target="areas">Abrir áreas</button>
+                <button class="ghost-btn" data-view-target="areas" data-help="Abre el detalle de las áreas: responsables, alertas, automatizaciones y cómo vender cada módulo al cliente.">Abrir áreas</button>
               </div>
               <div class="department-grid" id="departmentPulse"></div>
             </div>
@@ -1164,7 +1171,7 @@
                 <div class="phase"><small>DÍA 36-70</small><h3>Conexiones</h3><p>Integrar fuentes reales: Excel, CRM, ERP, WhatsApp, formularios o reportes existentes.</p></div>
                 <div class="phase"><small>DÍA 71-90</small><h3>ROI y escala</h3><p>Medir impacto, priorizar automatizaciones y presentar plan de expansión por área.</p></div>
               </div>
-              <div class="cta-row"><button class="primary-btn" id="copyPitchBtn">Copiar pitch corto</button><button class="ghost-btn" data-view-target="org">Volver al mapa</button></div>
+              <div class="cta-row"><button class="primary-btn" id="copyPitchBtn" data-help="Copia al portapapeles un pitch breve para explicar Command Center 360 en una conversación comercial.">Copiar pitch corto</button><button class="ghost-btn" data-view-target="org" data-help="Regresa al organigrama vivo para volver a la vista raíz del machote principal.">Volver al mapa</button></div>
             </div>
           </div>
         </div>
@@ -1193,6 +1200,8 @@
 
     const industries = {
       general: { label: 'Empresa general', pitch: 'Este machote muestra la estructura mínima de control que puede adaptarse a casi cualquier empresa: dirección, ventas, finanzas, operación, equipo, clientes, sistemas y riesgos.', dashboard: 'El dueño ve en minutos lo que antes tenía que perseguir en WhatsApp, Excel, juntas y reportes tardíos.', metrics: ['Ventas mes', 'Flujo 30 días', 'Alertas críticas', 'Decisiones'], values: ['$2.8M', '$740K', '12', '7'] },
+      herrero: { label: 'Proveedor del Herrero', pitch: 'Proveedor del Herrero: cotizaciones, inventario, cobranza y WhatsApp comercial.', dashboard: 'El dueño ve cotizaciones abiertas, WhatsApps sin seguimiento, inventario crítico, cobranza vencida, margen por producto y clientes urgentes que compran con el proveedor más rápido.', metrics: ['Cotizaciones', 'Inventario crítico', 'Cobranza vencida', 'Margen'], values: ['34', '18 SKU', '$480K', '21%'] },
+      fivi: { label: 'FIVI Hermosillo', pitch: 'FIVI Hermosillo: ventas/rentas, servicio técnico, refacciones y clientes industriales.', dashboard: 'La dirección ve rentas activas, servicios programados, cotizaciones abiertas, equipos disponibles/críticos, refacciones críticas, clientes industriales y rentabilidad por línea de negocio.', metrics: ['Rentas activas', 'Servicios programados', 'Refacciones críticas', 'Cotizaciones'], values: ['18', '26', '14', '32'] },
       distribuidora: { label: 'Distribuidora / Comercializadora', pitch: 'Adaptado a empresas con inventario, proveedores, rutas, ventas recurrentes, cobranza y margen por producto.', dashboard: 'Visibilidad diaria de ventas, margen, inventario crítico, cobranza, rutas y clientes sin seguimiento.', metrics: ['Ventas mes', 'Inventario crítico', 'Cobranza vencida', 'Margen'], values: ['$4.6M', '18 SKU', '$620K', '22%'] },
       constructora: { label: 'Constructora / Servicios técnicos', pitch: 'Adaptado a proyectos, cuadrillas, compras, avances de obra, presupuestos, estimaciones y riesgos de retraso.', dashboard: 'El director ve avance por proyecto, desviaciones de presupuesto, compras urgentes, cobranza y decisiones de obra.', metrics: ['Avance global', 'Sobrecosto', 'Proyectos riesgo', 'CxC'], values: ['71%', '8.4%', '3', '$1.1M'] },
       restaurante: { label: 'Restaurante / Grupo gastronómico', pitch: 'Adaptado a sucursales, ventas diarias, tickets promedio, costos de insumo, mermas, personal y reseñas.', dashboard: 'El dueño ve ventas por sucursal, margen, mermas, inventario, reputación y operación del día.', metrics: ['Ventas día', 'Ticket prom.', 'Merma', 'Reseñas'], values: ['$86K', '$312', '4.2%', '4.6★'] },
@@ -1240,7 +1249,7 @@
     function renderAreaNodes() {
       const areaNodes = $('#areaNodes');
       areaNodes.innerHTML = areas.map(area => `
-        <button class="node area" data-node="${area.id}" data-area="${area.name}">
+        <button class="node area" data-node="${area.id}" data-area="${area.name}" data-help="Abre el detalle de ${area.name}: KPIs, alertas, puestos sugeridos y automatizaciones posibles.">
           <div class="node-head"><span class="node-type">${area.type}</span><span class="status ${statusClass(area.status)}">${statusLabel(area.status)}</span></div>
           <h3>${area.name}</h3>
           <p>${area.desc.split(',').slice(0,2).join(',')}.</p>
@@ -1306,7 +1315,7 @@
     }
 
     function renderAreaList() {
-      $('#areaList').innerHTML = areas.map(area => `<button class="area-choice ${state.selectedArea.id === area.id ? 'active' : ''}" data-area-choice="${area.id}"><strong>${area.name}</strong><span>${area.type} · ${statusLabel(area.status)} · Score ${area.score}/100</span></button>`).join('');
+      $('#areaList').innerHTML = areas.map(area => `<button class="area-choice ${state.selectedArea.id === area.id ? 'active' : ''}" data-area-choice="${area.id}" data-help="Muestra la ficha operativa de ${area.name}: roles, alertas, automatizaciones y discurso comercial."><strong>${area.name}</strong><span>${area.type} · ${statusLabel(area.status)} · Score ${area.score}/100</span></button>`).join('');
     }
 
     function renderAreaDetail() {
@@ -1334,7 +1343,7 @@
       const score = Math.round(34 + (onCount / diagnosisQuestions.length) * 60);
       $('#maturityScore').textContent = score;
       $('#questionList').innerHTML = diagnosisQuestions.map((q, i) => `
-        <div class="question"><span>${q}</span><button class="toggle ${state.diagnosis[i] ? 'on' : ''}" data-question="${i}" aria-label="Cambiar respuesta"></button></div>
+        <div class="question"><span>${q}</span><button class="toggle ${state.diagnosis[i] ? 'on' : ''}" data-question="${i}" aria-label="Cambiar respuesta" data-help="Activa o desactiva esta respuesta para recalcular el score de madurez y ver prioridades del diagnóstico."></button></div>
       `).join('');
       const level = score < 55 ? 'critical' : score < 75 ? '' : 'ok';
       $('#diagnosisAlerts').innerHTML = [
@@ -1384,15 +1393,27 @@
       window.__toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
     }
 
-    function showTooltip(area, x, y) {
-      const tooltip = $('#tooltip');
-      tooltip.innerHTML = `<h3>${area.name}</h3><p>${area.desc}</p><div class="mini-metrics">${area.kpis.map(k => `<span>${k}</span>`).join('')}</div>`;
+    function positionTooltip(tooltip, x, y) {
       const margin = 18;
       const left = Math.min(x + 18, window.innerWidth - 378);
       const top = Math.min(y + 18, window.innerHeight - 210);
       tooltip.style.left = `${Math.max(margin, left)}px`;
       tooltip.style.top = `${Math.max(margin, top)}px`;
       tooltip.classList.add('visible');
+    }
+
+    function showTooltip(area, x, y) {
+      const tooltip = $('#tooltip');
+      tooltip.innerHTML = `<h3>${area.name}</h3><p>${area.desc}</p><div class="mini-metrics">${area.kpis.map(k => `<span>${k}</span>`).join('')}</div>`;
+      positionTooltip(tooltip, x, y);
+    }
+
+    function showHelpTooltip(target, x, y) {
+      const tooltip = $('#tooltip');
+      const labelNode = target.querySelector('h3, strong') || target.closest('.question')?.querySelector('span');
+      const label = (target.dataset.helpTitle || labelNode?.textContent || target.textContent || target.getAttribute('aria-label') || 'Control interactivo').replace(/\s+/g, ' ').trim();
+      tooltip.innerHTML = `<h3>${label}</h3><p>${target.dataset.help}</p>`;
+      positionTooltip(tooltip, x, y);
     }
 
     function hideTooltip() { $('#tooltip').classList.remove('visible'); }
@@ -1447,12 +1468,17 @@
 
       document.addEventListener('mousemove', (e) => {
         const node = e.target.closest('.node');
-        if (!node) { hideTooltip(); return; }
-        const id = node.dataset.node;
-        const area = id === 'ceo'
-          ? { name: 'CEO / Director / Dueño', desc: 'Entrada principal al dashboard. Aquí vive la lectura 360: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.', kpis: ['12 alertas', '7 decisiones', 'ROI'] }
-          : areas.find(a => a.id === id || a.name === node.dataset.area);
-        if (area) showTooltip(area, e.clientX, e.clientY);
+        if (node) {
+          const id = node.dataset.node;
+          const area = id === 'ceo'
+            ? { name: 'CEO / Director / Dueño', desc: 'Entrada principal al dashboard. Aquí vive la lectura 360: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.', kpis: ['12 alertas', '7 decisiones', 'ROI'] }
+            : areas.find(a => a.id === id || a.name === node.dataset.area);
+          if (area) { showTooltip(area, e.clientX, e.clientY); return; }
+          if (node.dataset.help) { showHelpTooltip(node, e.clientX, e.clientY); return; }
+        }
+        const helpTarget = e.target.closest('button[data-help]');
+        if (helpTarget) { showHelpTooltip(helpTarget, e.clientX, e.clientY); return; }
+        hideTooltip();
       });
 
       document.addEventListener('mouseover', (e) => {
