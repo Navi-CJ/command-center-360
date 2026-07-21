@@ -613,6 +613,150 @@
       position: relative;
     }
 
+
+
+    body[data-industry="fivi"] {
+      --accent: #f53842;
+      --accent-2: #ff5a63;
+      --purple: #1b2946;
+      --dark: #07101f;
+      --panel: rgba(14, 24, 43, .92);
+      --panel-2: rgba(21, 34, 58, .88);
+      --line-strong: rgba(245,56,66,.40);
+    }
+
+    body[data-industry="fivi"] .topbar {
+      background: linear-gradient(90deg, #0b1830, #17243e 55%, #0b1830);
+      border-bottom-color: rgba(245,56,66,.34);
+    }
+    body[data-industry="fivi"] .nav-btn.active,
+    body[data-industry="fivi"] .primary-btn {
+      background: #f53842;
+      color: #fff;
+      box-shadow: 0 0 34px rgba(245,56,66,.22);
+    }
+    body[data-industry="fivi"] .industry-select,
+    body[data-industry="fivi"] .pill {
+      border-color: rgba(245,56,66,.34);
+    }
+    body[data-industry="fivi"] .pulse-dot { background: #f53842; box-shadow: 0 0 16px rgba(245,56,66,.65); }
+    body[data-industry="fivi"] .glass-panel,
+    body[data-industry="fivi"] .dashboard-card,
+    body[data-industry="fivi"] .hero-dashboard {
+      border-color: rgba(245,56,66,.24);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(245,56,66,.12), transparent 34%),
+        linear-gradient(180deg, rgba(18, 30, 52, .94), rgba(7, 13, 25, .94));
+    }
+    body[data-industry="fivi"] .eyebrow,
+    body[data-industry="fivi"] .example-label,
+    body[data-industry="fivi"] .section-kicker .eyebrow { color: #ff4a54; }
+    body[data-industry="fivi"] .industry-tag { color:#fff; border-color: rgba(245,56,66,.44); background: rgba(245,56,66,.10); }
+    body[data-industry="fivi"] .command-badge { color:#fff; border-color: rgba(245,56,66,.42); background: rgba(245,56,66,.12); }
+
+    body[data-industry="fivi"] .map-title h1 { line-height: .98; padding-bottom: 8px; }
+
+    .fivi-only { display: none !important; }
+    body[data-industry="fivi"] .fivi-only { display: block !important; }
+
+    .fivi-brand-strip {
+      margin: 12px 0 18px;
+      border: 1px solid rgba(245,56,66,.28);
+      background:
+        linear-gradient(135deg, rgba(245,56,66,.18), rgba(8,16,31,.78)),
+        radial-gradient(circle at 85% 0%, rgba(255,255,255,.10), transparent 34%);
+      border-radius: 22px;
+      padding: 14px;
+      display: grid;
+      grid-template-columns: 168px 1fr;
+      gap: 14px;
+      align-items: center;
+      overflow: hidden;
+    }
+    .fivi-logo-box {
+      border-radius: 18px;
+      background: #111d34;
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 14px;
+      display:grid;
+      place-items:center;
+      min-height: 86px;
+    }
+    .fivi-logo-box img { width: 100%; max-width: 132px; height: auto; object-fit: contain; }
+    .fivi-brand-copy small { color:#ffb3b7; font: 900 10px var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+    .fivi-brand-copy strong { display:block; color:#fff; font-size:22px; line-height:1; margin-top:5px; letter-spacing:-.035em; }
+    .fivi-brand-copy p { color:#d8e3f2; font-size:13px; line-height:1.38; margin-top:8px; }
+    .fivi-brand-pills { display:flex; gap:7px; flex-wrap:wrap; margin-top:10px; }
+    .fivi-brand-pills span { border:1px solid rgba(255,255,255,.14); background:rgba(0,0,0,.16); color:#fff; border-radius:999px; padding:6px 8px; font:800 10px var(--mono); }
+
+    .fivi-command-card {
+      border-color: rgba(245,56,66,.32);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(245,56,66,.18), transparent 28%),
+        linear-gradient(180deg, rgba(22, 34, 57, .94), rgba(7, 13, 23, .95));
+    }
+    .fivi-card-head { display:grid; grid-template-columns: minmax(0,1fr) 180px; gap:16px; align-items:center; }
+    .fivi-card-head img { width: 160px; max-width: 100%; justify-self:end; border-radius:16px; padding:12px; background:#111d34; border:1px solid rgba(255,255,255,.12); }
+    .fivi-card-head h2 { color:#fff; font-size:24px; letter-spacing:-.035em; }
+    .fivi-card-head p { color:#d8e3f2; line-height:1.45; margin-top:6px; font-size:13px; }
+    .fivi-slogan { color:#fff; display:inline-flex; margin-bottom:7px; border-radius:999px; background:#f53842; padding:7px 10px; font:900 11px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+
+    .fivi-metrics { display:grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .fivi-metric { border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.045); border-radius:16px; padding:12px; min-height:100px; }
+    .fivi-metric small { color:#aebbd1; text-transform:uppercase; letter-spacing:.10em; font-size:10px; font-weight:900; }
+    .fivi-metric strong { display:block; margin-top:8px; color:#fff; font-size:25px; letter-spacing:-.04em; }
+    .fivi-metric span { display:block; color:#aebbd1; margin-top:6px; font-size:11px; line-height:1.32; }
+    .fivi-metric.warn strong { color: var(--warning); }
+    .fivi-metric.danger strong { color: var(--danger); }
+    .fivi-metric.good strong { color: var(--ok); }
+
+    .fivi-catalog-grid { display:grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap:10px; margin-top:14px; }
+    .fivi-product-card { border:1px solid rgba(255,255,255,.10); background:rgba(0,0,0,.18); border-radius:16px; padding:12px; min-height:136px; position:relative; overflow:hidden; }
+    .fivi-product-card::before { content:""; position:absolute; top:0; left:0; width:4px; height:100%; background:#f53842; }
+    .fivi-product-card small { color:#ffb3b7; font:900 10px var(--mono); letter-spacing:.10em; text-transform:uppercase; }
+    .fivi-product-card strong { display:block; color:#fff; margin-top:8px; font-size:14px; line-height:1.12; }
+    .fivi-product-card span { display:block; color:#aebbd1; margin-top:7px; font-size:11px; line-height:1.33; }
+
+    .fivi-flow-grid { display:grid; grid-template-columns: .95fr 1.05fr; gap:12px; margin-top:14px; }
+    .fivi-panel { border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.035); border-radius:17px; padding:13px; }
+    .fivi-panel h3 { font-size:14px; color:#fff; margin-bottom:10px; }
+    .fivi-log { display:grid; gap:8px; }
+    .fivi-event { display:grid; grid-template-columns:82px 1fr; gap:9px; border:1px solid rgba(255,255,255,.08); background:rgba(0,0,0,.16); border-radius:13px; padding:8px 9px; font-size:12px; color:#d8e3f2; }
+    .fivi-event time { color:#ff5a63; font:900 10px var(--mono); letter-spacing:.04em; }
+    .fivi-event strong { display:block; color:#fff; margin-bottom:2px; }
+    .fivi-event span { color:#aebbd1; }
+    .fivi-flow-row { display:grid; grid-template-columns:128px 1fr auto; gap:10px; align-items:center; font-size:12px; color:#d8e3f2; margin-bottom:9px; }
+    .fivi-flow-row .bar { height:8px; border-radius:999px; background:rgba(255,255,255,.08); overflow:hidden; }
+    .fivi-flow-row .bar span { display:block; height:100%; border-radius:999px; background:linear-gradient(90deg,#f53842,#ffb13b); transition:width .35s ease; }
+
+    .internal-work-legend,
+    body[data-industry="fivi"] .internal-work-legend { display:none !important; }
+    .fivi-tab-legend {
+      margin: 16px 22px 18px;
+      border: 1px solid rgba(245,56,66,.30);
+      background: rgba(9, 17, 31, .88);
+      color: #d8e3f2;
+      border-radius: 18px;
+      padding: 10px 14px;
+      font: 800 11px var(--mono);
+      letter-spacing: .04em;
+      text-align: center;
+      box-shadow: 0 18px 45px rgba(0,0,0,.22);
+      backdrop-filter: blur(12px);
+    }
+
+    @media (max-width: 1220px) {
+      .fivi-brand-strip, .fivi-card-head, .fivi-flow-grid { grid-template-columns: 1fr; }
+      .fivi-card-head img { justify-self:start; }
+      .fivi-metrics, .fivi-catalog-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .fivi-metrics, .fivi-catalog-grid { grid-template-columns: 1fr; }
+      .fivi-flow-row, .fivi-event { grid-template-columns: 1fr; }
+      .internal-work-legend { border-radius: 18px; font-size:10px; }
+    }
+
     .sim-status {
       display: inline-flex;
       align-items: center;
@@ -1103,9 +1247,21 @@
               </div>
               <div class="map-title">
                 <div>
-                  <h1>Una sola pantalla para entender quién opera, qué está pasando y dónde se está escapando dinero.</h1>
+                  <h1 id="mainHeadline">Una sola pantalla para entender quién opera, qué está pasando y dónde se está escapando dinero.</h1>
                 </div>
                 <p id="industryPitch">Demo vivo de una empresa operando: ventas, finanzas, compras, operación, clientes y reportes se actualizan como si el negocio estuviera corriendo en tiempo real.</p>
+              </div>
+
+
+
+              <div class="fivi-brand-strip fivi-only" id="fiviBrandStrip">
+                <div class="fivi-logo-box"><img src="https://mlzg0olxredp.i.optimole.com/w:600/h:321/q:mauto/f:best/https://fivi.com.mx/wp-content/uploads/2021/07/FIVI-RojoBlanco-01.png" alt="FIVI Industrial" /></div>
+                <div class="fivi-brand-copy">
+                  <small>FIVI Industrial · Hermosillo, Sonora</small>
+                  <strong>Montacargas, equipos industriales y soluciones para manejo de materiales.</strong>
+                  <p>Empresa 100% sonorense con más de una década de experiencia en administración de flotillas de vehículos industriales, accesorios y soporte operativo.</p>
+                  <div class="fivi-brand-pills"><span>Venta</span><span>Renta</span><span>Refacciones</span><span>Servicio técnico</span><span>Capacitación</span></div>
+                </div>
               </div>
 
               <div class="org-stage" aria-label="Organigrama interactivo">
@@ -1202,6 +1358,26 @@
                 </div>
               </div>
               <div class="sim-automation-grid" id="liveAutomationGrid"></div>
+            </div>
+
+
+
+
+            <div class="dashboard-card fivi-command-card fivi-only" id="fiviCommandPanel">
+              <div class="fivi-card-head">
+                <div>
+                  <span class="fivi-slogan">Venta | Renta | Refacciones | Servicio técnico</span>
+                  <h2>FIVI Command Center operativo</h2>
+                  <p>Tablero simulado para coordinar cotizaciones, rentas, servicio técnico, refacciones, flotillas, almacén, capacitación y soluciones de almacenaje en una sola herramienta interna.</p>
+                </div>
+                <img src="https://mlzg0olxredp.i.optimole.com/w:600/h:321/q:mauto/f:best/https://fivi.com.mx/wp-content/uploads/2021/07/FIVI-RojoBlanco-01.png" alt="FIVI Industrial" />
+              </div>
+              <div class="fivi-metrics" id="fiviLiveMetrics"></div>
+              <div class="fivi-catalog-grid" id="fiviCatalogGrid"></div>
+              <div class="fivi-flow-grid">
+                <div class="fivi-panel"><h3>Flujo FIVI simulado</h3><div id="fiviFlowGrid"></div></div>
+                <div class="fivi-panel"><h3>Eventos operativos detectados</h3><div class="fivi-log" id="fiviEventLog"></div></div>
+              </div>
             </div>
 
 
@@ -1319,10 +1495,59 @@
       { id: 'bi', name: 'Inteligencia / Reportes', type: 'Visibilidad', status: 'danger', score: 50, desc: 'Reportes ejecutivos, indicadores, tableros, análisis, alertas y verdad única de la empresa.', kpis: ['KPIs', 'Alertas', 'Datos'], roles: ['Analista BI', 'Datos', 'Reportes', 'Dashboard owner', 'Automatizaciones'], alerts: ['Reportes se entregan tarde', 'KPIs no estandarizados', 'Datos viven en archivos separados'], automation: ['Dashboard ejecutivo', 'Alertas automáticas', 'Consolidación de Excel', 'Score semanal por área'] }
     ];
 
+
+
+    const fiviAreas = [
+      { id: 'fivi-direccion', name: 'Dirección General', type: 'Control', status: 'warn', score: 72, desc: 'Visión ejecutiva de ventas, rentas, servicio técnico, refacciones, flotillas, caja, almacén y prioridades del día.', kpis: ['Rentas', 'Servicios', 'Margen'], roles: ['Dirección', 'Gerencia general', 'Coordinación operativa', 'Administración'], alerts: ['7 decisiones requieren criterio directivo', '3 clientes industriales con alta prioridad', 'Margen de refacciones por revisar'], automation: ['Resumen ejecutivo diario', 'Priorización automática de decisiones', 'Mapa de rentabilidad por línea'] },
+      { id: 'fivi-ventas-rentas', name: 'Ventas y Rentas', type: 'Ingresos', status: 'danger', score: 58, desc: 'Cotizaciones, renta de equipos, oportunidades Manitou/Hangcha/Raymond/Toyota/Hyster y seguimiento comercial.', kpis: ['Cotizaciones', 'Rentas', 'Cierre'], roles: ['Gerente comercial', 'Ejecutivos de venta', 'Coordinador de rentas', 'CRM'], alerts: ['32 cotizaciones abiertas sin siguiente acción', '6 rentas por renovar esta semana', '2 oportunidades Manitou con margen sensible'], automation: ['CRM de cotizaciones', 'Alertas de renovación de renta', 'Score de oportunidades por equipo'] },
+      { id: 'fivi-servicio', name: 'Servicio Técnico', type: 'Soporte', status: 'warn', score: 64, desc: 'Mantenimientos preventivos/correctivos para montacargas según equipo, horas de trabajo, técnico y cliente.', kpis: ['OT', 'SLA', 'Técnicos'], roles: ['Jefe de servicio', 'Técnicos', 'Mesa de servicio', 'Agenda'], alerts: ['9 órdenes de servicio programadas hoy', '3 equipos con SLA en riesgo', '2 técnicos requieren reasignación'], automation: ['Agenda técnica automática', 'Alertas por horas de trabajo', 'Checklist digital de mantenimiento'] },
+      { id: 'fivi-refacciones', name: 'Refacciones', type: 'Partes', status: 'danger', score: 57, desc: 'Partes y consumibles para marcas de vehículos industriales; foco en disponibilidad, urgencias y compras.', kpis: ['Partes', 'Backorder', 'Rotación'], roles: ['Refacciones', 'Compras', 'Almacén de partes', 'Proveedores'], alerts: ['14 refacciones críticas debajo de mínimo', '5 backorders afectan servicios activos', 'Solicitud TVH/Morvalué pendiente de confirmar'], automation: ['Stock mínimo por marca', 'Backorder por orden de servicio', 'Sugerencia de compra automática'] },
+      { id: 'fivi-flotillas', name: 'Flotillas y Clientes', type: 'Clientes', status: 'warn', score: 66, desc: 'Administración de flotillas industriales por cliente: historial, contratos, mantenimientos, renta y recurrencia.', kpis: ['Flotillas', 'Contratos', 'Recurrencia'], roles: ['Customer success', 'Ejecutivo de cuenta', 'Control de contratos', 'Postventa'], alerts: ['4 clientes requieren visita de seguimiento', '2 contratos vencen en 21 días', 'Cliente VIP con equipo detenido'], automation: ['Historial de equipo por cliente', 'Alertas de contrato', 'Semáforo de clientes críticos'] },
+      { id: 'fivi-almacen', name: 'Almacén e Inventario', type: 'Stock', status: 'warn', score: 63, desc: 'Control de equipos, llantas, baterías, aditamentos, refacciones, racks y disponibilidad para venta/renta/servicio.', kpis: ['Stock', 'Equipos', 'Ubicación'], roles: ['Almacén', 'Inventarios', 'Recepción', 'Control de equipos'], alerts: ['Inventario físico pendiente de validar', '3 equipos sin ubicación confirmada', 'Llantas industriales con rotación alta'], automation: ['Inventario digital', 'Ubicación por QR', 'Alertas de mínimos y máximos'] },
+      { id: 'fivi-compras', name: 'Compras y Proveedores', type: 'Abasto', status: 'ok', score: 73, desc: 'Relación con proveedores y distribuidores: Manitou, MECALUX, Genie, Deka, Voltruck, BBI, Enersys y más.', kpis: ['OC', 'Proveedor', 'Costo'], roles: ['Compras', 'Abastecimiento', 'Proveedores', 'Autorizaciones'], alerts: ['OC de baterías esperando autorización', 'Comparativo de llantas listo para decisión', 'Proveedor de andén requiere anticipo'], automation: ['Comparador de precios', 'Flujo de autorización', 'Historial por proveedor'] },
+      { id: 'fivi-logistica', name: 'Logística y Maniobras', type: 'Movimiento', status: 'ok', score: 71, desc: 'Traslados, maniobras, entregas, recolecciones y evidencias para equipos industriales y materiales.', kpis: ['Entregas', 'Maniobras', 'Evidencia'], roles: ['Coordinación logística', 'Operadores', 'Maniobras', 'Evidencias'], alerts: ['2 maniobras programadas para cliente industrial', 'Entrega de plataforma requiere ventana de acceso', 'Evidencia pendiente en una recolección'], automation: ['Calendario de maniobras', 'Control de evidencias', 'Rutas y ventanas de entrega'] },
+      { id: 'fivi-almacenaje', name: 'Almacenaje y Racks', type: 'Soluciones', status: 'ok', score: 76, desc: 'Soluciones de racks y sistemas de almacenaje industrial, incluyendo MECALUX y proyectos de infraestructura logística.', kpis: ['Racks', 'Proyectos', 'Capacidad'], roles: ['Ingeniería de almacenaje', 'Ventas técnicas', 'Instalación', 'Proyectos'], alerts: ['Proyecto de racks espera levantamiento', 'Layout de almacén pendiente de aprobación', 'Oportunidad de optimización de espacio detectada'], automation: ['Brief de proyecto', 'Checklist de levantamiento', 'Seguimiento 30/60/90 de instalación'] },
+      { id: 'fivi-capacitacion', name: 'Capacitación', type: 'Seguridad', status: 'ok', score: 74, desc: 'Cursos para operadores de vehículos industriales y trabajos seguros de corte/soldadura.', kpis: ['Cursos', 'Operadores', 'Vigencias'], roles: ['Capacitación', 'Instructor', 'Seguridad', 'Control documental'], alerts: ['Curso de operadores programado esta semana', 'Vigencias por renovar en 3 clientes', 'Constancias pendientes de enviar'], automation: ['Calendario de cursos', 'Control de vigencias', 'Constancias automáticas'] },
+      { id: 'fivi-finanzas', name: 'Finanzas y Cobranza', type: 'Dinero', status: 'warn', score: 62, desc: 'Caja, cobranza por servicio/renta/refacciones, pagos a proveedores, margen por línea y facturación.', kpis: ['Caja', 'CxC', 'Margen'], roles: ['Administración', 'Cobranza', 'Facturación', 'Cuentas por pagar'], alerts: ['$420K en cobranza vencida simulada', 'Factura de renta requiere seguimiento', 'Margen de refacciones cayó 2 puntos'], automation: ['Cobranza priorizada', 'Facturación por orden cerrada', 'Margen por línea de negocio'] },
+      { id: 'fivi-bi', name: 'Inteligencia / Reportes', type: 'Visibilidad', status: 'danger', score: 54, desc: 'Consolidación de CRM, órdenes de servicio, inventario, compras, rentas, facturación y desempeño operativo.', kpis: ['KPIs', 'Datos', 'Alertas'], roles: ['Analista BI', 'Dashboard owner', 'Datos', 'Automatización'], alerts: ['Datos viven en CRM/Excel/WhatsApp separados', 'Reporte semanal tarda demasiado', 'No hay semáforo único por cliente/equipo'], automation: ['Dashboard FIVI 360', 'Alertas automáticas', 'Reporte directivo por línea de negocio'] }
+    ];
+
+    const fiviCatalog = [
+      ['Montacargas', 'Manitou, Hangcha, Raymond, Toyota, Hyster, Yale, Crown, UniCarriers y Clark.', 'Venta/renta de equipos y oportunidades comerciales por marca.'],
+      ['Plataformas de elevación', 'Manitou AETJ, ATJ, MAN\'GO y Genie.', 'Trabajos en altura, disponibilidad, renta y mantenimiento.'],
+      ['Refacciones y consumibles', 'Partes para vehículos industriales y maquinaria; alianzas TVH / Morvalué.', 'Backorders, mínimos, urgencias y rotación por marca.'],
+      ['Baterías y cargadores', 'Deka, Voltruck, BBI, Enersys.', 'Energía industrial, reemplazos, mantenimiento y compras.'],
+      ['Llantas, ruedas y rodajas', 'Llantas industriales y componentes de movimiento.', 'Stock crítico y consumo por flotilla/equipo.'],
+      ['Almacenaje y racks', 'Racks MECALUX y soluciones de almacenamiento.', 'Proyectos de layout, preparación y despacho de mercancía.'],
+      ['Puertas / sistemas de andén', 'Infraca, McWire, Entrematic.', 'Infraestructura logística para almacenes y andenes.'],
+      ['Servicios especializados', 'Mantenimiento, maniobras, carrocería, pintura, soldadura, capacitación.', 'Agenda técnica, técnicos, SLA, constancias y evidencias.']
+    ];
+
+    const fiviEvents = [
+      { area: 'Ventas/Rentas', action: 'Cotización Manitou marcada como caliente', impact: '$620K estimados · siguiente llamada hoy', type: 'critical' },
+      { area: 'Servicio Técnico', action: 'Orden correctiva en SLA amarillo', impact: 'Equipo de cliente industrial detenido · reasignar técnico', type: 'critical' },
+      { area: 'Refacciones', action: 'Backorder afecta mantenimiento activo', impact: 'Parte crítica para Raymond · compra urgente', type: 'critical' },
+      { area: 'Flotillas', action: 'Renta próxima a renovar', impact: 'Cliente recurrente · preparar propuesta 12 meses', type: 'normal' },
+      { area: 'Almacén', action: 'Inventario de llantas debajo de mínimo', impact: 'Alta rotación · sugerir OC', type: 'normal' },
+      { area: 'Almacenaje', action: 'Proyecto de racks requiere levantamiento', impact: 'MECALUX · visita técnica pendiente', type: 'normal' },
+      { area: 'Capacitación', action: 'Curso de operadores confirmado', impact: 'Constancias pendientes al cierre', type: 'ok' },
+      { area: 'Logística', action: 'Maniobra completada con evidencia', impact: 'Entrega validada por cliente', type: 'ok' },
+      { area: 'Finanzas', action: 'Cobranza vencida priorizada', impact: '$420K simulados · 3 clientes clave', type: 'critical' },
+      { area: 'BI', action: 'Reporte FIVI 360 actualizado', impact: 'Rentas, servicio, partes y caja consolidados', type: 'ok' }
+    ];
+
+    const fiviFlowSteps = [
+      ['Lead industrial', 78], ['Cotización', 66], ['Renta / venta', 58], ['Orden servicio', 74], ['Refacciones', 53], ['Entrega / maniobra', 82], ['Factura / cobranza', 61], ['Reporte CEO', 88]
+    ];
+
+    function currentAreas() {
+      return state.industry === 'fivi' ? fiviAreas : areas;
+    }
+
     const industries = {
       general: { label: 'Empresa general', pitch: 'Demo vivo de una empresa operando: ventas, finanzas, compras, operación, clientes y reportes se actualizan como si el negocio estuviera corriendo en tiempo real.', dashboard: 'El dueño ve en minutos lo que antes tenía que perseguir en WhatsApp, Excel, juntas y reportes tardíos. En esta simulación, Command Center 360 detecta eventos, prioriza riesgos y propone decisiones mientras la empresa corre.', metrics: ['Ventas mes', 'Flujo 30 días', 'Alertas críticas', 'Decisiones'], values: ['$2.8M', '$740K', '12', '7'] },
       herrero: { label: 'Proveedor del Herrero', pitch: 'Proveedor del Herrero: cotizaciones, inventario, cobranza y WhatsApp comercial.', dashboard: 'El dueño ve cotizaciones abiertas, WhatsApps sin seguimiento, inventario crítico, cobranza vencida, margen por producto y clientes urgentes que compran con el proveedor más rápido.', metrics: ['Cotizaciones', 'Inventario crítico', 'Cobranza vencida', 'Margen'], values: ['34', '18 SKU', '$480K', '21%'] },
-      fivi: { label: 'FIVI Hermosillo', pitch: 'FIVI Hermosillo: ventas/rentas, servicio técnico, refacciones y clientes industriales.', dashboard: 'La dirección ve rentas activas, servicios programados, cotizaciones abiertas, equipos disponibles/críticos, refacciones críticas, clientes industriales y rentabilidad por línea de negocio.', metrics: ['Rentas activas', 'Servicios programados', 'Refacciones críticas', 'Cotizaciones'], values: ['18', '26', '14', '32'] },
+      fivi: { label: 'FIVI Hermosillo', headline: 'FIVI Command Center interno.', pitch: 'FIVI Industrial: venta, renta, refacciones y servicio técnico para montacargas, plataformas, racks, baterías, llantas, capacitación y manejo de materiales desde Hermosillo.', dashboard: 'La dirección de FIVI ve rentas activas, servicios programados, cotizaciones, refacciones críticas, flotillas por cliente, almacén, capacitación y rentabilidad por línea de negocio.', metrics: ['Rentas activas', 'Servicios hoy', 'Refacciones críticas', 'Cotizaciones'], values: ['18', '26', '14', '32'] },
       distribuidora: { label: 'Distribuidora / Comercializadora', pitch: 'Adaptado a empresas con inventario, proveedores, rutas, ventas recurrentes, cobranza y margen por producto.', dashboard: 'Visibilidad diaria de ventas, margen, inventario crítico, cobranza, rutas y clientes sin seguimiento.', metrics: ['Ventas mes', 'Inventario crítico', 'Cobranza vencida', 'Margen'], values: ['$4.6M', '18 SKU', '$620K', '22%'] },
       constructora: { label: 'Constructora / Servicios técnicos', pitch: 'Adaptado a proyectos, cuadrillas, compras, avances de obra, presupuestos, estimaciones y riesgos de retraso.', dashboard: 'El director ve avance por proyecto, desviaciones de presupuesto, compras urgentes, cobranza y decisiones de obra.', metrics: ['Avance global', 'Sobrecosto', 'Proyectos riesgo', 'CxC'], values: ['71%', '8.4%', '3', '$1.1M'] },
       restaurante: { label: 'Restaurante / Grupo gastronómico', pitch: 'Adaptado a sucursales, ventas diarias, tickets promedio, costos de insumo, mermas, personal y reseñas.', dashboard: 'El dueño ve ventas por sucursal, margen, mermas, inventario, reputación y operación del día.', metrics: ['Ventas día', 'Ticket prom.', 'Merma', 'Reseñas'], values: ['$86K', '$312', '4.2%', '4.6★'] },
@@ -1370,7 +1595,8 @@
 
     function renderAreaNodes() {
       const areaNodes = $('#areaNodes');
-      areaNodes.innerHTML = areas.map(area => `
+      const activeAreas = currentAreas();
+      areaNodes.innerHTML = activeAreas.map(area => `
         <button class="node area" data-node="${area.id}" data-area="${area.name}" data-help="Abre el detalle de ${area.name}: KPIs, alertas, puestos sugeridos y automatizaciones posibles.">
           <div class="node-head"><span class="node-type">${area.type}</span><span class="status ${statusClass(area.status)}">${statusLabel(area.status)}</span></div>
           <h3>${area.name}</h3>
@@ -1385,8 +1611,8 @@
         name: 'CEO / Director / Dueño',
         status: 'warn',
         desc: 'Aquí se concentra la visión completa de la empresa: dinero, ventas, operación, equipo, riesgos, alertas y decisiones pendientes.',
-        alerts: ['7 decisiones requieren criterio del director', '12 alertas activas en áreas críticas', '3 oportunidades de ahorro detectadas'],
-        kpis: ['Dinero', 'Ventas', 'Riesgo']
+        alerts: state.industry === 'fivi' ? ['7 decisiones FIVI requieren criterio directivo', 'Refacciones críticas afectan servicios activos', 'Rentas y cotizaciones necesitan seguimiento comercial'] : ['7 decisiones requieren criterio del director', '12 alertas activas en áreas críticas', '3 oportunidades de ahorro detectadas'],
+        kpis: state.industry === 'fivi' ? ['Rentas', 'Servicio', 'Refacciones'] : ['Dinero', 'Ventas', 'Riesgo']
       };
       $('#inspectorTitle').textContent = item.name;
       $('#inspectorDescription').textContent = item.desc;
@@ -1399,6 +1625,45 @@
     }
 
 
+
+
+
+    function getFiviSnapshot() {
+      const t = state.liveTick;
+      return {
+        kpiValues: [String(18 + [0,1,2,0,-1,1][t % 6]), String(24 + [0,2,1,3,-1,2][t % 6]), String(14 + [0,1,-1,2,0,1][t % 6]), String(32 + [0,3,1,-2,4,2][t % 6])],
+        metrics: [
+          ['Rentas activas', String(18 + [0,1,2,0,-1,1][t % 6]), 'Equipos en cliente / contrato', 'good'],
+          ['Servicios hoy', String(24 + [0,2,1,3,-1,2][t % 6]), 'Preventivos y correctivos programados', 'warn'],
+          ['Refacciones críticas', String(14 + [0,1,-1,2,0,1][t % 6]), 'Partes bajo mínimo o backorder', 'danger'],
+          ['Cotizaciones', String(32 + [0,3,1,-2,4,2][t % 6]), 'Venta/renta/refacciones abiertas', 'warn']
+        ]
+      };
+    }
+
+    function renderFiviSimulation() {
+      const panel = $('#fiviCommandPanel');
+      if (!panel) return;
+      const isFivi = state.industry === 'fivi';
+      panel.classList.toggle('hidden', !isFivi);
+      const pill = $('#liveDemoPill');
+      if (pill && isFivi) pill.innerHTML = '<span class="pulse-dot"></span> FIVI interno';
+      if (!isFivi) return;
+      const snap = getFiviSnapshot();
+      const hh = String(7 + Math.floor((state.liveTick * 5) % 12)).padStart(2, '0');
+      const mm = String((state.liveTick * 11) % 60).padStart(2, '0');
+      $('#fiviLiveMetrics').innerHTML = snap.metrics.map(m => `<div class="fivi-metric ${m[3]}"><small>${m[0]}</small><strong>${m[1]}</strong><span>${m[2]}</span></div>`).join('');
+      $('#fiviCatalogGrid').innerHTML = fiviCatalog.map(c => `<div class="fivi-product-card"><small>${c[0]}</small><strong>${c[1]}</strong><span>${c[2]}</span></div>`).join('');
+      $('#fiviFlowGrid').innerHTML = fiviFlowSteps.map((step, i) => {
+        const val = Math.max(28, Math.min(96, step[1] + Math.round(Math.sin((state.liveTick + i) / 1.8) * 9)));
+        return `<div class="fivi-flow-row"><span>${step[0]}</span><div class="bar"><span style="width:${val}%"></span></div><strong>${val}%</strong></div>`;
+      }).join('');
+      $('#fiviEventLog').innerHTML = [0,1,2,3,4].map((_, i) => {
+        const ev = fiviEvents[(state.liveTick + i) % fiviEvents.length];
+        const minute = String((Number(mm) + i * 4) % 60).padStart(2, '0');
+        return `<div class="fivi-event ${ev.type}"><time>${hh}:${minute}</time><div><strong>${ev.area} · ${ev.action}</strong><span>${ev.impact}</span></div></div>`;
+      }).join('');
+    }
 
     const generalLiveEvents = [
       { area: 'Ventas', action: 'Nueva oportunidad B2B entra al pipeline', impact: '+$185K estimados · requiere seguimiento en 2h', type: 'ok' },
@@ -1495,23 +1760,25 @@
     function startGeneralLiveSimulation() {
       clearInterval(window.__cc360LiveTimer);
       window.__cc360LiveTimer = setInterval(() => {
-        if (state.industry !== 'general') return;
+        if (!['general','fivi'].includes(state.industry)) return;
         state.liveTick = (state.liveTick + 1) % 9999;
         renderDashboard();
         renderGeneralLiveSimulation();
+        renderFiviSimulation();
       }, 2600);
     }
 
     function renderKpis() {
       const industry = industries[state.industry];
       const live = state.industry === 'general' ? getGeneralSnapshot() : null;
-      const values = live ? live.kpiValues : industry.values;
-      const classes = state.industry === 'general' ? ['good', 'good', 'danger', 'warn'] : ['good', 'warn', 'danger', 'warn'];
+      const fiviLive = state.industry === 'fivi' ? getFiviSnapshot() : null;
+      const values = live ? live.kpiValues : fiviLive ? fiviLive.kpiValues : industry.values;
+      const classes = state.industry === 'general' ? ['good', 'good', 'danger', 'warn'] : state.industry === 'fivi' ? ['good', 'warn', 'danger', 'warn'] : ['good', 'warn', 'danger', 'warn'];
       $('#kpiGrid').innerHTML = industry.metrics.map((m, i) => `
         <div class="kpi-card ${classes[i]}">
-          <small>${m}<span>${state.industry === 'general' ? ['live', '30d', 'ahora', 'CEO'][i] : i === 0 ? 'actual' : i === 1 ? '30d' : i === 2 ? 'hoy' : 'pend.'}</span></small>
+          <small>${m}<span>${state.industry === 'general' ? ['live', '30d', 'ahora', 'CEO'][i] : state.industry === 'fivi' ? ['renta', 'agenda', 'stock', 'crm'][i] : i === 0 ? 'actual' : i === 1 ? '30d' : i === 2 ? 'hoy' : 'pend.'}</span></small>
           <strong>${values[i]}</strong>
-          <span>${state.industry === 'general' ? ['Simulación de ventas entrando al sistema', 'Cashflow recalculado por cobranza/pagos', 'Alertas detectadas por operación viva', 'Pendientes que suben al dueño'][i] : ['Lectura ejecutiva inmediata', 'Tendencia y riesgo', 'Prioridad del día', 'Requiere decisión'][i]}</span>
+          <span>${state.industry === 'general' ? ['Simulación de ventas entrando al sistema', 'Cashflow recalculado por cobranza/pagos', 'Alertas detectadas por operación viva', 'Pendientes que suben al dueño'][i] : state.industry === 'fivi' ? ['Equipos activos en cliente', 'Órdenes preventivas/correctivas', 'Partes bajo mínimo o backorder', 'Venta/renta/refacciones abiertas'][i] : ['Lectura ejecutiva inmediata', 'Tendencia y riesgo', 'Prioridad del día', 'Requiere decisión'][i]}</span>
         </div>
       `).join('');
     }
@@ -1520,7 +1787,8 @@
       const industry = industries[state.industry];
       $('#dashboardPitch').textContent = industry.dashboard;
       renderKpis();
-      $('#departmentPulse').innerHTML = areas.slice(0, 9).map(area => `
+      const activeAreas = currentAreas();
+      $('#departmentPulse').innerHTML = activeAreas.slice(0, 9).map(area => `
         <div class="dept-tile" data-area-tile="${area.id}">
           <div class="node-head"><span class="node-type">${area.type}</span><span class="status ${statusClass(area.status)}">${statusLabel(area.status)}</span></div>
           <h3>${area.name}</h3>
@@ -1541,10 +1809,12 @@
         ['Cumplimiento y contratos', 34, '']
       ].map(r => `<div class="risk-row"><span>${r[0]}</span><div class="bar ${r[2]}"><span style="width:${r[1]}%"></span></div><span>${r[1]}%</span></div>`).join('');
       renderGeneralLiveSimulation();
+      renderFiviSimulation();
     }
 
     function renderAreaList() {
-      $('#areaList').innerHTML = areas.map(area => `<button class="area-choice ${state.selectedArea.id === area.id ? 'active' : ''}" data-area-choice="${area.id}" data-help="Muestra la ficha operativa de ${area.name}: roles, alertas, automatizaciones y discurso comercial."><strong>${area.name}</strong><span>${area.type} · ${statusLabel(area.status)} · Score ${area.score}/100</span></button>`).join('');
+      const activeAreas = currentAreas();
+      $('#areaList').innerHTML = activeAreas.map(area => `<button class="area-choice ${state.selectedArea.id === area.id ? 'active' : ''}" data-area-choice="${area.id}" data-help="Muestra la ficha operativa de ${area.name}: roles, alertas, automatizaciones y discurso comercial."><strong>${area.name}</strong><span>${area.type} · ${statusLabel(area.status)} · Score ${area.score}/100</span></button>`).join('');
     }
 
     function renderAreaDetail() {
@@ -1608,10 +1878,21 @@
     function setIndustry(value) {
       state.industry = value;
       const industry = industries[value];
+      document.body.dataset.industry = value;
       $('#industryTag').textContent = industry.label;
       $('#industryPitch').textContent = industry.pitch;
+      $('#mainHeadline').textContent = industry.headline || 'Una sola pantalla para entender quién opera, qué está pasando y dónde se está escapando dinero.';
+      const activeAreas = currentAreas();
+      if (!activeAreas.some(a => a.id === state.selectedArea.id)) state.selectedArea = activeAreas[0];
+      document.body.dataset.industry = state.industry;
+      ensureFiviLegends();
+      renderAreaNodes();
+      renderInspector(null);
       renderDashboard();
+      renderAreaList();
+      renderAreaDetail();
       renderGeneralLiveSimulation();
+      renderFiviSimulation();
       localStorage.setItem('cc360-industry', value);
     }
 
@@ -1664,7 +1945,7 @@
             showToast('Entrando al Centro de Control Ejecutivo');
             return;
           }
-          const area = areas.find(a => a.id === id || a.name === node.dataset.area);
+          const area = currentAreas().find(a => a.id === id || a.name === node.dataset.area);
           if (area) {
             state.selectedArea = area;
             renderAreaList();
@@ -1675,14 +1956,14 @@
 
         const choice = e.target.closest('[data-area-choice]');
         if (choice) {
-          state.selectedArea = areas.find(a => a.id === choice.dataset.areaChoice) || areas[0];
+          state.selectedArea = currentAreas().find(a => a.id === choice.dataset.areaChoice) || currentAreas()[0];
           renderAreaList();
           renderAreaDetail();
         }
 
         const tile = e.target.closest('[data-area-tile]');
         if (tile) {
-          state.selectedArea = areas.find(a => a.id === tile.dataset.areaTile) || areas[0];
+          state.selectedArea = currentAreas().find(a => a.id === tile.dataset.areaTile) || currentAreas()[0];
           renderAreaList();
           renderAreaDetail();
           showView('areas');
@@ -1702,7 +1983,7 @@
           const id = node.dataset.node;
           const area = id === 'ceo'
             ? { name: 'CEO / Director / Dueño', desc: 'Entrada principal al dashboard. Aquí vive la lectura 360: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.', kpis: ['12 alertas', '7 decisiones', 'ROI'] }
-            : areas.find(a => a.id === id || a.name === node.dataset.area);
+            : currentAreas().find(a => a.id === id || a.name === node.dataset.area);
           if (area) { showTooltip(area, e.clientX, e.clientY); return; }
           if (node.dataset.help) { showHelpTooltip(node, e.clientX, e.clientY); return; }
         }
@@ -1715,7 +1996,7 @@
         const node = e.target.closest('.node');
         if (!node) return;
         const id = node.dataset.node;
-        const area = id === 'ceo' ? null : areas.find(a => a.id === id || a.name === node.dataset.area);
+        const area = id === 'ceo' ? null : currentAreas().find(a => a.id === id || a.name === node.dataset.area);
         renderInspector(area);
       });
 
@@ -1735,6 +2016,18 @@
         if (e.key === '3') showView('areas');
         if (e.key === '4') showView('diagnosis');
         if (e.key === '5') showView('roi');
+      });
+    }
+
+
+
+    function ensureFiviLegends() {
+      $$('.view').forEach(view => {
+        if (view.querySelector('.fivi-tab-legend')) return;
+        const note = document.createElement('div');
+        note.className = 'fivi-tab-legend fivi-only';
+        note.textContent = 'Herramienta de trabajo interna de FIVI · Uso operativo simulado para dirección, ventas, rentas, servicio técnico, refacciones, almacén, capacitación y soluciones industriales.';
+        view.appendChild(note);
       });
     }
 
