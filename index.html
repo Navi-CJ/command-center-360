@@ -1,124 +1,1508 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Command Center 360 — Piloto Ejecutivo</title>
-<meta name="description" content="Command Center 360 — Piloto Ejecutivo con organigrama vivo y tablero de control para dirección." />
-<style>
-:root{
-  --bg:#05090f;
-  --bg2:#080e16;
-  --panel:#111923;
-  --panel2:#141d28;
-  --panel3:#0c131d;
-  --stroke:#263243;
-  --stroke2:#334154;
-  --text:#eef5ff;
-  --muted:#9eabba;
-  --muted2:#b5c2d1;
-  --teal:#28f0c2;
-  --teal2:#10c7a7;
-  --gold:#ffd06a;
-  --amber:#ffb326;
-  --red:#ff5574;
-  --green:#38f78f;
-  --radius:28px;
-  --font:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter","Segoe UI",Roboto,sans-serif;
-  --mono:"SF Mono",ui-monospace,Menlo,Monaco,Consolas,monospace;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--bg)}
-body{margin:0;min-height:100vh;background:radial-gradient(circle at 2% 10%,rgba(31,222,190,.14),transparent 24%),radial-gradient(circle at 69% 0%,rgba(72,54,138,.28),transparent 30%),linear-gradient(180deg,#05090f,#060a10 48%,#03060a);color:var(--text);font-family:var(--font);overflow-x:hidden}button,select,input{font:inherit}.app{min-height:100vh}.topbar{height:62px;display:grid;grid-template-columns:minmax(300px,365px) minmax(520px,572px) minmax(250px,1fr) 100px;align-items:center;gap:clamp(10px,1.2vw,28px);padding:11px 14px 7px;border-bottom:1px solid rgba(69,84,105,.36);background:rgba(5,9,15,.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:30}.brand{display:flex;align-items:center;gap:15px;min-width:0}.logo{width:42px;height:42px;border-radius:14px;border:1px solid rgba(40,240,194,.72);display:grid;place-items:center;background:linear-gradient(145deg,rgba(40,240,194,.12),rgba(144,105,255,.16));box-shadow:0 0 24px rgba(40,240,194,.16)}.logo svg{width:26px;height:26px}.brand h1{margin:0;font-size:20px;line-height:1;font-weight:900;letter-spacing:-.3px}.brand p{margin:5px 0 0;color:var(--muted);font-size:13px;line-height:1;font-weight:650}.tabs{height:45px;border:1px solid var(--stroke);background:rgba(14,20,31,.86);border-radius:999px;display:flex;align-items:center;justify-content:flex-start;gap:2px;padding:5px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02)}.tabs button{border:0;background:transparent;color:#a5b1c0;border-radius:999px;height:34px;padding:0 clamp(10px,1.05vw,16px);font-size:clamp(12px,1.03vw,14px);font-weight:800;white-space:nowrap;cursor:pointer;flex:0 1 auto}.tabs button.active{background:var(--teal);color:#03110d;box-shadow:0 14px 34px rgba(40,240,194,.25)}.example-wrap{align-self:stretch;display:grid;align-content:center;min-width:0}.example-label{font:900 11px/1 var(--mono);letter-spacing:.26em;color:#9da9ba;text-transform:uppercase;margin:0 0 6px 12px}.example-select{height:41px;width:100%;border-radius:999px;border:1px solid var(--stroke);background:#080d15;color:var(--text);font-size:17px;font-weight:850;padding:0 16px;outline:0}.live-pill{height:30px;align-self:center;justify-self:end;border:1px solid rgba(40,240,194,.36);border-radius:999px;background:rgba(40,240,194,.07);display:flex;align-items:center;gap:10px;padding:0 14px;color:#c9d6e4;font-size:13px;font-weight:800;white-space:nowrap}.live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 20px var(--green)}
-.main{padding:24px 14px 56px;display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}.map-panel,.inspector,.page-card{border:1px solid var(--stroke);border-radius:var(--radius);background:linear-gradient(180deg,rgba(21,30,42,.96),rgba(9,15,24,.98));box-shadow:0 28px 90px rgba(0,0,0,.42)}.map-panel{min-height:1180px;padding:36px 24px 34px;position:relative;overflow:hidden}.map-panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 0 4%,rgba(40,240,194,.08),transparent 26%),radial-gradient(circle at 74% 0,rgba(126,95,230,.07),transparent 30%);pointer-events:none}.inner{position:relative;z-index:1}.kicker{display:flex;align-items:center;gap:10px;margin:4px 0 34px;font:950 13px/1 var(--mono);letter-spacing:.30em;color:var(--teal);text-transform:uppercase}.kicker:before{content:"";width:26px;height:2px;border-radius:2px;background:var(--teal)}.company-pill{position:absolute;right:23px;top:22px;min-width:136px;text-align:center;border:1px solid rgba(255,208,106,.45);background:rgba(255,208,106,.075);border-radius:999px;color:var(--gold);font-size:14px;font-weight:900;padding:11px 18px}.hero{display:grid;grid-template-columns:minmax(430px,.52fr) minmax(360px,.48fr);gap:34px;align-items:end}.hero-title{font-size:56px;line-height:.98;letter-spacing:-2.1px;margin:0;color:#edf5ff;font-weight:950;max-width:560px}.hero-copy{margin:0 0 6px;color:var(--muted);font-size:15.5px;line-height:1.46;font-weight:650;max-width:520px}.summary-cards{display:grid;grid-template-columns:1.16fr .95fr .95fr;gap:12px;margin-top:25px}.mini-card{border:1px solid var(--stroke2);border-radius:18px;background:rgba(17,25,35,.86);padding:15px 14px 14px;min-height:90px}.mini-card b{display:block;margin-bottom:12px;color:var(--teal);font:950 12px/1.15 var(--mono);letter-spacing:.22em;text-transform:uppercase}.mini-card strong{display:block;color:#f1f7ff;font-size:16px;line-height:1.1;margin-bottom:10px;font-weight:900}.mini-card span{display:block;color:var(--muted);font-size:13px;line-height:1.28;font-weight:650}.org-board{margin-top:18px;border:1px solid rgba(55,68,88,.42);border-radius:24px;background-color:rgba(4,8,13,.65);background-image:linear-gradient(rgba(124,145,170,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(124,145,170,.075) 1px,transparent 1px);background-size:42px 42px;min-height:610px;padding:25px 22px 30px;overflow:hidden}.org-tree{width:100%;min-width:0;display:grid;gap:16px;justify-items:center}.role{border:1px solid rgba(74,88,108,.55);background:linear-gradient(180deg,rgba(22,32,46,.98),rgba(11,18,29,.98));border-radius:18px;color:#dce7f4;box-shadow:0 18px 56px rgba(0,0,0,.25);cursor:pointer;transition:.16s ease}.role:hover{border-color:rgba(40,240,194,.82);transform:translateY(-1px)}.role.ceo{width:min(442px,100%);min-height:174px;text-align:center;border-color:rgba(40,240,194,.84);background:radial-gradient(circle at 0 0,rgba(40,240,194,.18),transparent 52%),linear-gradient(180deg,rgba(23,46,50,.96),rgba(11,18,29,.98));position:relative;padding:24px 16px 18px;box-shadow:0 0 0 1px rgba(40,240,194,.22),0 24px 70px rgba(40,240,194,.12)}.role-label{font:950 11px/1 var(--mono);letter-spacing:.27em;text-transform:uppercase;color:#a9b7c6}.role.ceo h3{font-size:27px;line-height:1.05;margin:26px 0 12px;color:#f2f8ff}.role.ceo p{margin:0 auto;color:var(--muted);font-size:13px;line-height:1.35;max-width:360px;font-weight:650}.chip-row{display:flex;align-items:center;gap:8px;margin-top:20px;justify-content:flex-start}.role.ceo .chip-row{padding-left:0;justify-content:flex-start}.chip{border:1px solid var(--stroke2);border-radius:999px;background:rgba(255,255,255,.035);color:#c6d3e0;font:850 11px/1 var(--mono);padding:7px 10px}.alert-chip{position:absolute;right:16px;top:16px;color:#cbd7e3}.alert-chip:before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--amber);margin-right:7px}.enter{position:absolute;right:15px;bottom:23px;border:0;border-radius:999px;background:var(--teal);color:#03110d;font:950 11px/1 var(--mono);letter-spacing:.20em;text-transform:uppercase;padding:13px 19px;cursor:pointer}.connector{width:2px;height:32px;background:linear-gradient(var(--teal),rgba(40,240,194,.16))}.row{display:flex;justify-content:center;gap:11px;width:100%}.role.mid{width:126px;min-height:88px;padding:15px 14px}.role.small{width:100px;min-height:80px;padding:13px 10px}.role h4{margin:8px 0 7px;color:#e8f1fb;font-size:12.5px;line-height:1.1}.role.mid p,.role.small p{margin:0;color:#a9b6c5;font-size:9.5px;line-height:1.25;font-weight:650}.role.small .role-label{font-size:7.5px;letter-spacing:.22em}.foot{margin-top:20px;text-align:center;color:#a9b6c5;font-size:9px;font-weight:650}.inspector{position:sticky;top:86px;min-height:642px;padding:24px 20px}.inspector-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.muted-label{color:#9eabba;font-size:13px;font-weight:800}.inspector h2{margin:5px 0 17px;font-size:24px;line-height:1.02;letter-spacing:-.7px}.attention{height:25px;border:1px solid var(--stroke2);border-radius:999px;display:flex;align-items:center;gap:8px;padding:0 14px;color:#aebbc8;font:900 12px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;white-space:nowrap}.attention:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber);display:block}.info-box{border:1px solid var(--stroke2);border-radius:22px;background:rgba(255,255,255,.035);padding:18px 15px;margin:13px 0}.info-box h3{font-size:14px;line-height:1.1;margin:0 0 14px;color:#dbe5f0}.info-box p{margin:0;color:#a7b4c3;font-size:13px;line-height:1.48;font-weight:650}.alerts{display:grid;gap:8px}.alert-line{display:flex;align-items:center;gap:12px;border:1px solid rgba(49,60,76,.70);background:rgba(6,11,18,.42);border-radius:17px;min-height:48px;padding:10px 13px}.alert-line i{width:9px;height:9px;border-radius:50%;flex:0 0 auto}.alert-line i.red{background:var(--red)}.alert-line i.amber{background:var(--amber)}.alert-line span{font-size:12px;line-height:1.25;color:#d6e1ee;font-weight:700}.actions{display:flex;gap:11px;margin-top:15px}.btn{border:1px solid var(--stroke2);background:rgba(255,255,255,.045);border-radius:999px;color:#f2f8ff;text-decoration:none;min-height:38px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;cursor:pointer}.btn.primary{background:var(--teal);border-color:transparent;color:#03110d;box-shadow:0 18px 52px rgba(40,240,194,.22)}.view{display:none}.view.active{display:block}.subview{grid-column:1/-1;display:none}.subview.active{display:block}.page-card{padding:24px}.page-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-12{grid-column:span 12}.metric{font-size:42px;color:var(--teal);font-weight:950}.page-card h2{margin:0 0 10px;font-size:28px}.page-card h3{margin:0 0 10px;font-size:16px}.page-card p,.page-card span{color:#a7b4c3}.list{display:grid;gap:10px}.list-item{border:1px solid var(--stroke2);border-radius:16px;background:rgba(255,255,255,.035);padding:13px}.list-item strong{display:block;color:#f1f7ff}.list-item span{font-size:12px}.roi-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.field label{display:block;color:#a7b4c3;font-size:12px;margin-bottom:5px}.field input{width:100%;background:#07101a;border:1px solid var(--stroke2);border-radius:12px;color:#f2f8ff;padding:12px}.result{border:1px solid rgba(40,240,194,.35);background:rgba(40,240,194,.07);border-radius:16px;padding:14px;margin-bottom:10px}.result b{display:block;color:var(--green);font-size:28px}.diag-q{border:1px solid var(--stroke2);border-radius:14px;background:rgba(255,255,255,.035);padding:12px;margin-top:10px}.diag-q label{display:flex;align-items:center;justify-content:space-between;gap:14px;color:#dce7f4;font-weight:750}.diag-q small{display:block;color:#a7b4c3}.score{font-size:54px;color:var(--teal);font-weight:950}@media(max-width:1300px) and (min-width:1181px){.tabs button{font-size:12px;padding:0 9px}.brand p{font-size:12px}.example-label{font-size:10px;letter-spacing:.20em}.example-select{font-size:15px}}@media(max-width:1180px){.topbar{height:auto;grid-template-columns:1fr;gap:10px;padding:12px}.tabs{width:100%;overflow:auto}.main{grid-template-columns:1fr}.inspector{position:relative;top:auto}.hero{grid-template-columns:1fr}.hero-title{font-size:44px;max-width:none}.hero-copy{max-width:none}.org-board{overflow:auto}.summary-cards{grid-template-columns:1fr}.example-wrap{width:100%}}@media(max-width:700px){.main{padding:12px}.map-panel,.inspector{padding:18px;border-radius:22px}.hero-title{font-size:36px}.org-tree{min-width:760px}.role.ceo{width:380px}.actions{flex-direction:column}.btn{width:100%}.span-3,.span-4,.span-6{grid-column:span 12}}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Command Center 360 — Piloto Ejecutivo</title>
+  <style>
+    :root {
+      --bg: #06090d;
+      --panel: #0b1118;
+      --panel-2: #101824;
+      --panel-3: #141f2d;
+      --ink: #eef6ff;
+      --muted: #93a4b7;
+      --soft: #c4d1df;
+      --line: rgba(149, 180, 214, .18);
+      --line-strong: rgba(143, 231, 255, .38);
+      --accent: #29f3c3;
+      --accent-2: #9d79ff;
+      --gold: #ffd166;
+      --danger: #ff5468;
+      --warning: #ffb020;
+      --ok: #42e889;
+      --shadow: 0 24px 80px rgba(0,0,0,.45);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-sm: 10px;
+      --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Aptos", "Inter", "Segoe UI", sans-serif;
+      --mono: "SF Mono", "Menlo", "Consolas", monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(41, 243, 195, .15), transparent 34%),
+        radial-gradient(circle at 86% 10%, rgba(157, 121, 255, .18), transparent 38%),
+        linear-gradient(135deg, #040608 0%, #09111a 48%, #05070b 100%);
+      overflow: hidden;
+    }
+
+    button, select { font: inherit; }
+
+    .app-shell {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: 72px 1fr;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 22px;
+      padding: 14px 22px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(6, 10, 15, .82);
+      backdrop-filter: blur(18px);
+      position: relative;
+      z-index: 50;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 292px;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(145deg, rgba(41, 243, 195, .2), rgba(157, 121, 255, .2)),
+        #0e1722;
+      border: 1px solid rgba(41, 243, 195, .48);
+      box-shadow: 0 0 32px rgba(41, 243, 195, .14), inset 0 0 20px rgba(255,255,255,.04);
+    }
+
+    .brand-mark svg { width: 25px; height: 25px; }
+
+    .brand-title { display: grid; gap: 1px; }
+    .brand-title strong { font-size: 18px; letter-spacing: .02em; }
+    .brand-title span { color: var(--muted); font-size: 12px; }
+
+    .nav {
+      justify-self: center;
+      display: flex;
+      gap: 8px;
+      padding: 5px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .nav button {
+      border: 0;
+      color: var(--muted);
+      background: transparent;
+      padding: 9px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: .18s ease;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .nav button:hover { color: var(--ink); background: rgba(255,255,255,.06); }
+    .nav button.active {
+      color: #06100e;
+      background: var(--accent);
+      box-shadow: 0 0 28px rgba(41, 243, 195, .20);
+      font-weight: 800;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .industry-select {
+      color: var(--ink);
+      background: rgba(9, 15, 23, .9);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 9px 12px;
+      min-width: 176px;
+      outline: none;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(41,243,195,.28);
+      border-radius: 999px;
+      padding: 8px 11px;
+      color: var(--soft);
+      background: rgba(41,243,195,.07);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--ok);
+      box-shadow: 0 0 0 0 rgba(66, 232, 137, .55);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(66, 232, 137, .55); }
+      72% { box-shadow: 0 0 0 11px rgba(66, 232, 137, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(66, 232, 137, 0); }
+    }
+
+    .workspace {
+      min-height: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .view {
+      position: absolute;
+      inset: 0;
+      padding: 22px;
+      display: none;
+      overflow: auto;
+    }
+
+    .view.active { display: block; }
+
+    .screen-grid {
+      min-height: calc(100vh - 116px);
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 18px;
+    }
+
+    .glass-panel {
+      background: linear-gradient(180deg, rgba(16, 24, 36, .86), rgba(8, 13, 20, .90));
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(120deg, rgba(255,255,255,.08), transparent 24%, transparent 75%, rgba(41, 243, 195, .04));
+      opacity: .7;
+    }
+
+    .panel-content { position: relative; z-index: 1; }
+
+    .map-panel { padding: 22px; }
+
+    .section-kicker {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      border-radius: 99px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(41, 243, 195, .6);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .map-title {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 20px;
+    }
+
+    .map-title h1 {
+      font-size: clamp(32px, 4vw, 64px);
+      line-height: .92;
+      letter-spacing: -.055em;
+      max-width: 900px;
+    }
+
+    .map-title p {
+      color: var(--muted);
+      line-height: 1.45;
+      max-width: 490px;
+      font-size: 14px;
+    }
+
+    .industry-tag {
+      border: 1px solid rgba(255, 209, 102, .32);
+      background: rgba(255, 209, 102, .08);
+      color: var(--gold);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .org-stage {
+      margin-top: 10px;
+      padding: 18px;
+      border: 1px solid rgba(255,255,255,.08);
+      background:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+        rgba(3, 7, 11, .36);
+      background-size: 42px 42px;
+      border-radius: 24px;
+      overflow-x: auto;
+    }
+
+    .org-chart {
+      min-width: 1060px;
+      display: grid;
+      gap: 14px;
+      justify-items: center;
+      position: relative;
+      padding: 6px 0 10px;
+    }
+
+    .org-row { display: flex; gap: 14px; justify-content: center; align-items: stretch; width: 100%; }
+    .org-row.executive { gap: 18px; }
+    .org-row.areas { flex-wrap: wrap; max-width: 1110px; }
+
+    .node {
+      position: relative;
+      border: 1px solid rgba(139, 166, 197, .23);
+      background: linear-gradient(180deg, rgba(19, 29, 43, .94), rgba(9, 14, 22, .96));
+      color: var(--ink);
+      border-radius: 18px;
+      padding: 14px 14px 13px;
+      min-height: 92px;
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease, background .18s ease;
+      box-shadow: 0 16px 40px rgba(0,0,0,.22);
+      outline: none;
+    }
+
+    .node:hover, .node:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(41, 243, 195, .68);
+      box-shadow: 0 24px 70px rgba(0,0,0,.38), 0 0 42px rgba(41, 243, 195, .10);
+    }
+
+    .node.ceo {
+      width: 440px;
+      min-height: 128px;
+      border-color: rgba(41, 243, 195, .62);
+      background:
+        radial-gradient(circle at 14% 14%, rgba(41,243,195,.24), transparent 26%),
+        linear-gradient(140deg, rgba(18, 39, 45, .98), rgba(14, 15, 28, .98));
+      box-shadow: 0 24px 88px rgba(41, 243, 195, .08), 0 0 0 1px rgba(41,243,195,.16) inset;
+    }
+
+    .node.gm {
+      width: 360px;
+      min-height: 108px;
+      border-color: rgba(157, 121, 255, .45);
+      background: linear-gradient(140deg, rgba(35, 27, 55, .98), rgba(12, 15, 22, .98));
+    }
+
+    .node.area { width: 166px; }
+
+    .node-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .node-type {
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      font-weight: 900;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      color: var(--soft);
+      border: 1px solid rgba(255,255,255,.10);
+      padding: 4px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .status::before { content: ""; width: 7px; height: 7px; border-radius: 99px; background: var(--ok); }
+    .status.warn::before { background: var(--warning); }
+    .status.danger::before { background: var(--danger); }
+
+    .node h3 { font-size: 15px; line-height: 1.04; letter-spacing: -.02em; }
+    .node.ceo h3 { font-size: 26px; }
+    .node.gm h3 { font-size: 20px; }
+
+    .node p { color: var(--muted); font-size: 12px; line-height: 1.35; margin-top: 7px; }
+
+    .mini-metrics {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .mini-metrics span {
+      color: var(--soft);
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 999px;
+      padding: 5px 7px;
+      font-size: 10px;
+      font-family: var(--mono);
+    }
+
+    .connector {
+      width: 2px;
+      height: 20px;
+      background: linear-gradient(var(--line-strong), transparent);
+      opacity: .8;
+    }
+
+    .side-panel {
+      padding: 18px;
+      min-height: 100%;
+    }
+
+    .side-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .side-title h2 { font-size: 20px; line-height: 1.05; letter-spacing: -.02em; }
+    .side-title span { color: var(--muted); font-size: 12px; }
+
+    .inspector-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 18px;
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+
+    .inspector-card h3 {
+      font-size: 13px;
+      letter-spacing: .02em;
+      margin-bottom: 8px;
+      color: var(--soft);
+    }
+
+    .inspector-card p, .inspector-card li {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    .inspector-card ul { margin: 8px 0 0; padding-left: 17px; }
+
+    .alert-list { display: grid; gap: 8px; }
+
+    .alert-item {
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.16);
+      border-radius: 13px;
+      padding: 9px 10px;
+      display: grid;
+      grid-template-columns: 9px 1fr;
+      gap: 9px;
+      align-items: start;
+      color: var(--soft);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .alert-dot { width: 9px; height: 9px; border-radius: 99px; margin-top: 3px; background: var(--warning); }
+    .alert-item.critical .alert-dot { background: var(--danger); }
+    .alert-item.ok .alert-dot { background: var(--ok); }
+
+    .cta-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+    .primary-btn, .ghost-btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 14px;
+      cursor: pointer;
+      transition: .18s ease;
+      font-weight: 850;
+      font-size: 13px;
+    }
+
+    .primary-btn {
+      background: var(--accent);
+      color: #06100e;
+      box-shadow: 0 0 30px rgba(41, 243, 195, .18);
+    }
+
+    .primary-btn:hover { transform: translateY(-2px); }
+
+    .ghost-btn {
+      color: var(--ink);
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+    }
+
+    .ghost-btn:hover { background: rgba(255,255,255,.10); }
+
+    .dashboard-layout {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      min-height: calc(100vh - 116px);
+    }
+
+    .dashboard-main, .dashboard-side { display: grid; gap: 18px; min-height: 0; }
+
+    .hero-dashboard {
+      padding: 22px;
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(41, 243, 195, .28);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(41, 243, 195, .18), transparent 32%),
+        linear-gradient(180deg, rgba(16, 24, 36, .9), rgba(6, 10, 16, .94));
+      box-shadow: var(--shadow);
+    }
+
+    .dashboard-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .dashboard-head h1 {
+      font-size: clamp(34px, 4.2vw, 62px);
+      line-height: .9;
+      letter-spacing: -.058em;
+    }
+
+    .dashboard-head p {
+      color: var(--muted);
+      max-width: 700px;
+      line-height: 1.45;
+      margin-top: 10px;
+    }
+
+    .command-badge {
+      display: grid;
+      place-items: center;
+      width: 124px;
+      height: 124px;
+      border-radius: 34px;
+      background: rgba(0,0,0,.24);
+      border: 1px solid rgba(41,243,195,.33);
+      color: var(--accent);
+      text-align: center;
+      font-family: var(--mono);
+      letter-spacing: .08em;
+      font-size: 11px;
+      text-transform: uppercase;
+      box-shadow: inset 0 0 38px rgba(41,243,195,.08);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .kpi-card {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.045);
+      border-radius: 18px;
+      padding: 14px;
+      min-height: 118px;
+    }
+
+    .kpi-card small {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .10em;
+      font-weight: 900;
+    }
+
+    .kpi-card strong {
+      display: block;
+      font-size: 30px;
+      letter-spacing: -.04em;
+      margin-top: 13px;
+    }
+
+    .kpi-card span { color: var(--muted); font-size: 12px; }
+    .kpi-card.good strong { color: var(--ok); }
+    .kpi-card.warn strong { color: var(--warning); }
+    .kpi-card.danger strong { color: var(--danger); }
+
+    .dashboard-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(17, 26, 38, .88), rgba(8, 13, 20, .88));
+      padding: 18px;
+      box-shadow: 0 18px 50px rgba(0,0,0,.20);
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 13px;
+    }
+
+    .card-head h2 { font-size: 19px; letter-spacing: -.025em; }
+    .card-head p { color: var(--muted); font-size: 12px; line-height: 1.35; max-width: 370px; }
+
+    .department-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .dept-tile {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px;
+      background: rgba(255,255,255,.035);
+      min-height: 112px;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+
+    .dept-tile:hover { transform: translateY(-2px); border-color: rgba(41,243,195,.44); }
+    .dept-tile h3 { font-size: 14px; margin-bottom: 10px; }
+    .dept-tile p { color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+    .risk-meter {
+      display: grid;
+      gap: 10px;
+    }
+
+    .risk-row {
+      display: grid;
+      grid-template-columns: 124px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      color: var(--soft);
+      font-size: 12px;
+    }
+
+    .bar {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .bar span { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+    .bar.warn span { background: var(--warning); }
+    .bar.danger span { background: var(--danger); }
+
+    .decision-list { display: grid; gap: 10px; }
+
+    .decision {
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.035);
+      border-radius: 15px;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .decision strong { font-size: 13px; }
+    .decision span { color: var(--muted); font-size: 12px; line-height: 1.35; }
+    .decision .priority { justify-self: start; font-size: 10px; text-transform: uppercase; letter-spacing: .11em; padding: 5px 8px; border-radius: 999px; background: rgba(255,176,32,.12); color: var(--warning); border: 1px solid rgba(255,176,32,.25); font-weight: 900; }
+    .decision.critical .priority { background: rgba(255,84,104,.12); color: var(--danger); border-color: rgba(255,84,104,.25); }
+
+    .area-layout {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 18px;
+      min-height: calc(100vh - 116px);
+    }
+
+    .area-menu { padding: 18px; }
+    .area-menu h1 { font-size: 32px; letter-spacing: -.045em; line-height: 1; margin: 7px 0 12px; }
+    .area-menu p { color: var(--muted); line-height: 1.45; font-size: 14px; }
+
+    .area-list { display: grid; gap: 9px; margin-top: 18px; }
+
+    .area-choice {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 15px;
+      padding: 12px;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      transition: .18s ease;
+    }
+
+    .area-choice:hover, .area-choice.active { border-color: rgba(41,243,195,.52); background: rgba(41,243,195,.08); }
+    .area-choice strong { display: block; font-size: 13px; }
+    .area-choice span { display: block; color: var(--muted); font-size: 11px; margin-top: 4px; }
+
+    .area-detail { padding: 22px; }
+
+    .area-detail-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .area-detail-head h1 { font-size: 46px; letter-spacing: -.055em; line-height: .95; }
+    .area-detail-head p { color: var(--muted); margin-top: 10px; max-width: 780px; line-height: 1.45; }
+
+    .score-ring {
+      width: 122px;
+      height: 122px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(var(--accent) calc(var(--score, 70) * 1%), rgba(255,255,255,.10) 0);
+      position: relative;
+    }
+
+    .score-ring::after {
+      content: "";
+      position: absolute;
+      inset: 11px;
+      border-radius: inherit;
+      background: #0b1118;
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .score-ring strong { position: relative; z-index: 1; font-size: 28px; }
+    .score-ring span { position: relative; z-index: 1; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .11em; margin-top: -18px; }
+
+    .area-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .bullet-list { display: grid; gap: 8px; margin-top: 10px; }
+
+    .bullet {
+      display: grid;
+      grid-template-columns: 9px 1fr;
+      gap: 9px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.36;
+    }
+
+    .bullet::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 99px;
+      background: var(--accent);
+      margin-top: 4px;
+    }
+
+    .diagnosis-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      min-height: calc(100vh - 116px);
+    }
+
+    .diagnosis-panel { padding: 22px; }
+
+    .big-score {
+      margin: 18px 0;
+      border: 1px solid rgba(41,243,195,.28);
+      border-radius: 28px;
+      padding: 22px;
+      background: rgba(41,243,195,.06);
+    }
+
+    .big-score strong { font-size: 80px; letter-spacing: -.07em; color: var(--accent); display: block; line-height: .9; }
+    .big-score span { color: var(--muted); }
+
+    .question-list { display: grid; gap: 10px; }
+
+    .question {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 13px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .question span { color: var(--soft); font-size: 13px; }
+    .toggle {
+      width: 46px;
+      height: 25px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.10);
+      position: relative;
+      cursor: pointer;
+      transition: .18s ease;
+    }
+    .toggle::before {
+      content: "";
+      position: absolute;
+      width: 19px;
+      height: 19px;
+      border-radius: 99px;
+      left: 3px;
+      top: 2px;
+      background: var(--muted);
+      transition: .18s ease;
+    }
+    .toggle.on { background: rgba(41,243,195,.20); border-color: rgba(41,243,195,.42); }
+    .toggle.on::before { transform: translateX(20px); background: var(--accent); }
+
+    .roi-layout {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 18px;
+      min-height: calc(100vh - 116px);
+    }
+
+    .input-group { display: grid; gap: 9px; margin-top: 14px; }
+    .input-row { display: grid; gap: 7px; }
+    .input-row label { color: var(--muted); font-size: 12px; }
+    .input-row input {
+      color: var(--ink);
+      background: rgba(255,255,255,.055);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 13px;
+      outline: none;
+      font: 700 15px var(--font);
+    }
+    .input-row input:focus { border-color: rgba(41,243,195,.48); }
+
+    .roi-results {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+    .phase {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 20px;
+      padding: 16px;
+      min-height: 220px;
+    }
+    .phase small { color: var(--accent); font-family: var(--mono); letter-spacing: .06em; }
+    .phase h3 { margin-top: 10px; font-size: 18px; }
+    .phase p { color: var(--muted); line-height: 1.4; margin-top: 8px; font-size: 13px; }
+
+    .tooltip {
+      position: fixed;
+      width: min(360px, calc(100vw - 32px));
+      pointer-events: none;
+      z-index: 100;
+      border: 1px solid rgba(41,243,195,.34);
+      background: rgba(7, 11, 17, .95);
+      backdrop-filter: blur(18px);
+      border-radius: 18px;
+      box-shadow: 0 24px 70px rgba(0,0,0,.45);
+      padding: 14px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .12s ease, transform .12s ease;
+    }
+
+    .tooltip.visible { opacity: 1; transform: translateY(0); }
+    .tooltip h3 { font-size: 16px; margin-bottom: 7px; }
+    .tooltip p { color: var(--muted); font-size: 13px; line-height: 1.42; }
+    .tooltip .mini-metrics { margin-top: 11px; }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%) translateY(24px);
+      opacity: 0;
+      transition: .2s ease;
+      z-index: 200;
+      border: 1px solid rgba(41,243,195,.30);
+      background: rgba(7, 11, 17, .92);
+      color: var(--soft);
+      border-radius: 999px;
+      padding: 11px 15px;
+      box-shadow: var(--shadow);
+      font-size: 13px;
+    }
+    .toast.visible { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    .hidden { display: none !important; }
+
+    /* Ajustes de fidelidad/encaje para que el machote raíz quepa limpio sin perder las 12 áreas. */
+    body { overflow-x: hidden; }
+    .topbar {
+      width: 100%;
+      max-width: 100vw;
+      grid-template-columns: minmax(260px, 300px) minmax(430px, 1fr) minmax(330px, auto);
+      gap: 14px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+    .brand { min-width: 0; }
+    .brand-title strong { font-size: clamp(16px, 1.35vw, 18px); }
+    .brand-title span { font-size: clamp(11px, .95vw, 12px); }
+    .nav { gap: 4px; max-width: 100%; }
+    .nav button { padding: 9px clamp(9px, .9vw, 14px); font-size: clamp(11px, .98vw, 13px); }
+    .top-actions { min-width: 0; }
+    .industry-select { min-width: 0; width: min(295px, 23vw); }
+    .pill { padding: 8px 10px; }
+    .org-chart { min-width: 0; width: 100%; }
+    .org-row.areas { max-width: 100%; display: grid; grid-template-columns: repeat(4, minmax(150px, 1fr)); gap: 12px; align-items: stretch; }
+    .node.area { width: 100%; min-height: 172px; height: 100%; }
+    .node-head { gap: 7px; }
+    .node-type { font-size: 9px; letter-spacing: .095em; min-width: 0; overflow-wrap: anywhere; }
+    .status { flex: 0 0 auto; font-size: 9px; padding: 4px 6px; letter-spacing: .055em; }
+    .node h3 { overflow-wrap: anywhere; }
+    .node p { overflow-wrap: anywhere; }
+    .mini-metrics span { font-size: 9px; padding: 5px 6px; }
+
+    @media (max-width: 1220px) {
+      .topbar { grid-template-columns: 1fr; gap: 10px; height: auto; }
+      .brand, .top-actions { justify-self: center; }
+      .app-shell { grid-template-rows: auto 1fr; }
+      .screen-grid, .dashboard-layout, .area-layout, .diagnosis-grid, .roi-layout { grid-template-columns: 1fr; }
+      .side-panel { min-height: auto; }
+      .department-grid, .area-columns, .kpi-grid, .roadmap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      body { overflow: auto; }
+      .workspace { overflow: visible; }
+      .view { position: relative; min-height: calc(100vh - 130px); }
+    }
+
+    @media (max-width: 760px) {
+      .nav { overflow-x: auto; width: 100%; justify-content: start; }
+      .top-actions { flex-wrap: wrap; }
+      .map-title, .dashboard-head, .area-detail-head { grid-template-columns: 1fr; }
+      .kpi-grid, .department-grid, .area-columns, .roadmap, .roi-results { grid-template-columns: 1fr; }
+      .view { padding: 12px; }
+      .node.ceo, .node.gm { width: 330px; }
+    }
+
+    @media print {
+      body { overflow: visible; background: #fff; color: #111; }
+      .topbar, .tooltip, .toast { display: none; }
+      .view { display: block; position: static; page-break-after: always; }
+    }
+  </style>
 </head>
 <body>
-<div class="app">
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none"><path d="M32 7 53 19v26L32 57 11 45V19L32 7Z" stroke="#28f0c2" stroke-width="4"/><path d="M32 19v26M19 32h26" stroke="#a981ff" stroke-width="5" stroke-linecap="round"/></svg></div>
-      <div><h1>Command Center 360</h1><p>Sistema Operativo Visual para Dueños y Directores</p></div>
-    </div>
-    <nav class="tabs" aria-label="Secciones principales">
-      <button class="active" data-view="home">Organigrama vivo</button>
-      <button data-view="ceo">Dashboard CEO</button>
-      <button data-view="areas">Áreas</button>
-      <button data-view="diagnostic">Diagnóstico</button>
-      <button data-view="roi">ROI / Piloto</button>
-    </nav>
-    <div class="example-wrap"><div class="example-label">Ejemplos aterrizados</div><select id="exampleSelect" class="example-select"><option value="general">Empresa general</option><option value="industrial">Proveedor industrial</option><option value="clinica">Clínica / salud</option><option value="restaurante">Restaurante / cadena local</option><option value="inmobiliaria">Inmobiliaria / desarrolladora</option></select></div>
-    <div class="live-pill"><span class="live-dot"></span>Demo vivo</div>
-  </header>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand" aria-label="Command Center 360">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M12 3.4 20 8v8l-8 4.6L4 16V8l8-4.6Z" stroke="#29f3c3" stroke-width="1.5"/>
+            <path d="M8 12h8M12 8v8" stroke="#9d79ff" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-title">
+          <strong>Command Center 360</strong>
+          <span>Sistema Operativo Visual para Dueños y Directores</span>
+        </div>
+      </div>
 
-  <main class="main">
-    <section class="view active" id="home">
-      <div class="map-panel">
-        <div class="inner">
-          <div class="kicker">Mapa vivo de la empresa</div>
-          <div class="company-pill" id="companyPill">Empresa general</div>
-          <div class="hero">
-            <h2 class="hero-title">Una sola pantalla para entender quién opera, qué está pasando y dónde se está escapando dinero.</h2>
-            <p class="hero-copy" id="heroCopy">Este machote muestra la estructura mínima de control que puede adaptarse a casi cualquier empresa: dirección, ventas, finanzas, operación, equipo, clientes, sistemas y riesgos.</p>
-          </div>
-          <div class="summary-cards">
-            <article class="mini-card"><b>Ejemplo seleccionado</b><strong id="selectedExample">Machote adaptable</strong><span>¿Qué está pasando hoy y qué decisión necesito tomar?</span></article>
-            <article class="mini-card"><b>Fugas probables</b><strong id="leakTitle">Seguimiento comercial débil</strong><span id="leakText">Reportes tarde · Decisiones sin dueño claro</span></article>
-            <article class="mini-card"><b>Primeras áreas a vender</b><strong id="firstAreas">Ventas + Finanzas</strong><span id="firstAreasText">Operaciones · Reportes</span></article>
-          </div>
-          <div class="org-board">
-            <div class="org-tree">
-              <div class="role ceo" data-role="CEO / Director / Dueño">
-                <div class="role-label">Entrada principal <span class="chip alert-chip">Atención</span></div>
-                <h3>CEO / Director / Dueño</h3>
-                <p>Centro de Control Ejecutivo: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.</p>
-                <div class="chip-row"><span class="chip">12 alertas</span><span class="chip">7 decisiones</span><span class="chip">360°</span></div>
-                <button class="enter" data-jump="ceo">Click: entrar</button>
+      <nav class="nav" aria-label="Navegación principal">
+        <button class="nav-btn active" data-view="org">Organigrama vivo</button>
+        <button class="nav-btn" data-view="dashboard">Dashboard CEO</button>
+        <button class="nav-btn" data-view="areas">Áreas</button>
+        <button class="nav-btn" data-view="diagnosis">Diagnóstico</button>
+        <button class="nav-btn" data-view="roi">ROI / Piloto</button>
+      </nav>
+
+      <div class="top-actions">
+        <select id="industrySelect" class="industry-select" aria-label="Seleccionar industria">
+          <option value="general">Empresa general</option>
+          <option value="distribuidora">Distribuidora / Comercializadora</option>
+          <option value="constructora">Constructora / Servicios técnicos</option>
+          <option value="restaurante">Restaurante / Grupo gastronómico</option>
+          <option value="clinica">Clínica / Salud privada</option>
+          <option value="agencia">Agencia / Servicios profesionales</option>
+          <option value="musica">Música / Management artístico</option>
+        </select>
+        <div class="pill"><span class="pulse-dot"></span> Demo vivo</div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section id="view-org" class="view active" aria-label="Organigrama vivo">
+        <div class="screen-grid">
+          <div class="glass-panel map-panel">
+            <div class="panel-content">
+              <div class="section-kicker">
+                <div class="eyebrow">Mapa vivo de la empresa</div>
+                <div class="industry-tag" id="industryTag">Empresa general</div>
               </div>
-              <div class="connector"></div>
-              <div class="row">
-                <div class="role mid" data-role="Gerente General"><div class="role-label">Coordinación</div><h4>Gerente General</h4><p>Responsables, prioridades, SLA y avances.</p></div>
-                <div class="role mid" data-role="Finanzas"><div class="role-label">Dinero</div><h4>Finanzas</h4><p>Cashflow, cobranza, gasto, margen y fugas.</p></div>
-                <div class="role mid" data-role="Ventas"><div class="role-label">Ingresos</div><h4>Ventas</h4><p>Leads, cotizaciones, seguimiento y cierre.</p></div>
-                <div class="role mid" data-role="Operaciones"><div class="role-label">Entrega</div><h4>Operaciones</h4><p>Tickets, entregas, calidad, proveedores.</p></div>
+              <div class="map-title">
+                <div>
+                  <h1>Una sola pantalla para entender quién opera, qué está pasando y dónde se está escapando dinero.</h1>
+                </div>
+                <p id="industryPitch">Este machote muestra la estructura mínima de control que puede adaptarse a casi cualquier empresa: dirección, ventas, finanzas, operación, equipo, clientes, sistemas y riesgos.</p>
               </div>
-              <div class="connector"></div>
-              <div class="row">
-                <div class="role small" data-role="Marketing"><div class="role-label">Demanda</div><h4>Marketing</h4><p>Campañas, contenido y costo por lead.</p></div>
-                <div class="role small" data-role="RH"><div class="role-label">Equipo</div><h4>RH / Equipo</h4><p>Carga, asistencia, desempeño.</p></div>
-                <div class="role small" data-role="Atención Cliente"><div class="role-label">Cliente</div><h4>Atención</h4><p>Quejas, FAQs, satisfacción y SLA.</p></div>
-                <div class="role small" data-role="Legal / Documentos"><div class="role-label">Riesgo</div><h4>Legal / Docs</h4><p>Contratos, permisos y vencimientos.</p></div>
-                <div class="role small" data-role="Sistemas / Datos"><div class="role-label">Datos</div><h4>Sistemas</h4><p>Permisos, integraciones y seguridad.</p></div>
+
+              <div class="org-stage" aria-label="Organigrama interactivo">
+                <div class="org-chart" id="orgChart">
+                  <div class="org-row executive">
+                    <button class="node ceo" data-node="ceo" data-action="dashboard" aria-label="Entrar al centro de control del CEO">
+                      <div class="node-head"><span class="node-type">Entrada principal</span><span class="status warn">Atención</span></div>
+                      <h3>CEO / Director / Dueño</h3>
+                      <p>Centro de Control Ejecutivo: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.</p>
+                      <div class="mini-metrics"><span>12 alertas</span><span>7 decisiones</span><span>360°</span></div>
+                    </button>
+                  </div>
+                  <div class="connector"></div>
+                  <div class="org-row executive">
+                    <button class="node gm" data-node="gerencia" data-area="Gerencia General">
+                      <div class="node-head"><span class="node-type">Coordinación</span><span class="status">Operando</span></div>
+                      <h3>Subdirector / Gerente General</h3>
+                      <p>Aterriza prioridades del director, coordina áreas y convierte alertas en ejecución diaria.</p>
+                    </button>
+                  </div>
+                  <div class="connector"></div>
+                  <div class="org-row areas" id="areaNodes"></div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="foot">Machote general: cada caja del organigrama puede convertirse en dashboard, alerta, decisión, workflow o módulo vendible.</div>
+
+          <aside class="glass-panel side-panel">
+            <div class="panel-content">
+              <div class="side-title">
+                <div>
+                  <span>Inspector ejecutivo</span>
+                  <h2 id="inspectorTitle">Pasa el cursor por un área</h2>
+                </div>
+                <span id="inspectorStatus" class="status warn">Demo</span>
+              </div>
+
+              <div class="inspector-card">
+                <h3>Qué verá el Director</h3>
+                <p id="inspectorDescription">Al seleccionar una parte del organigrama se muestran KPIs, alertas, responsables, riesgos y oportunidades de automatización.</p>
+              </div>
+
+              <div class="inspector-card">
+                <h3>Alertas dentro</h3>
+                <div class="alert-list" id="inspectorAlerts"></div>
+              </div>
+
+              <div class="inspector-card">
+                <h3>Gancho comercial</h3>
+                <p id="inspectorHook">No es un organigrama bonito: es una forma de mostrarle al dueño qué necesita controlar para vender más, perder menos y decidir más rápido.</p>
+              </div>
+
+              <div class="cta-row">
+                <button class="primary-btn" id="openDashboardBtn">Entrar como CEO</button>
+                <button class="ghost-btn" id="showDiagnosisBtn">Ver diagnóstico</button>
+              </div>
+            </div>
+          </aside>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <aside class="inspector" id="inspector">
-      <div class="inspector-head"><div><div class="muted-label">Inspector ejecutivo</div><h2 id="inspectorTitle">CEO / Director / Dueño</h2></div><div class="attention">Atención</div></div>
-      <div class="info-box"><h3>Qué verá el Director</h3><p id="inspectorText">Aquí se concentra la visión completa de la empresa: dinero, ventas, operación, equipo, riesgos, alertas y decisiones pendientes.</p></div>
-      <div class="info-box"><h3>Alertas dentro</h3><div class="alerts"><div class="alert-line"><i class="red"></i><span>7 decisiones requieren criterio del director</span></div><div class="alert-line"><i class="amber"></i><span>12 alertas activas en áreas críticas</span></div><div class="alert-line"><i class="amber"></i><span>3 oportunidades de ahorro detectadas</span></div></div></div>
-      <div class="info-box"><h3>Gancho comercial</h3><p id="hookText">El gancho: el dueño siente que recupera control sin tener que perseguir reportes. La demo debe vender tranquilidad, dinero y velocidad de decisión.</p></div>
-      <div class="actions"><button class="btn primary" data-jump="ceo">Entrar como CEO</button><button class="btn" data-jump="diagnostic">Ver diagnóstico</button></div>
-    </aside>
+      <section id="view-dashboard" class="view" aria-label="Dashboard del CEO">
+        <div class="dashboard-layout">
+          <div class="dashboard-main">
+            <div class="hero-dashboard">
+              <div class="dashboard-head">
+                <div>
+                  <div class="eyebrow">Centro de Control Ejecutivo</div>
+                  <h1>Dashboard del CEO</h1>
+                  <p id="dashboardPitch">El dueño ve en minutos lo que antes tenía que perseguir en WhatsApp, Excel, juntas y reportes tardíos.</p>
+                </div>
+                <div class="command-badge">Director<br/>360<br/>Live</div>
+              </div>
+              <div class="kpi-grid" id="kpiGrid"></div>
+            </div>
 
-    <section class="subview" id="ceo"><div class="page-grid"><div class="page-card span-12"><h2>Dashboard CEO</h2><p>Vista ejecutiva para responder qué necesita atención, dónde hay dinero atorado y qué decisión falta.</p></div><div class="page-card span-3"><h3>Ventas</h3><div class="metric">+12%</div><p>Mejora objetivo en conversión.</p></div><div class="page-card span-3"><h3>Cashflow</h3><div class="metric">7</div><p>Alertas de cobranza/pagos.</p></div><div class="page-card span-3"><h3>Operación</h3><div class="metric">18</div><p>Tickets priorizados por impacto.</p></div><div class="page-card span-3"><h3>Decisiones</h3><div class="metric">5</div><p>Puntos para aprobación.</p></div></div></section>
-    <section class="subview" id="areas"><div class="page-card"><h2>Áreas convertibles en módulos</h2><div class="page-grid"><div class="page-card span-4"><h3>Ventas</h3><p>Leads, cotizaciones, seguimiento y cierre.</p></div><div class="page-card span-4"><h3>Finanzas</h3><p>Cashflow, cobranza, gasto y margen.</p></div><div class="page-card span-4"><h3>Operación</h3><p>Tickets, entregas, calidad y proveedores.</p></div></div></div></section>
-    <section class="subview" id="diagnostic"><div class="page-grid"><div class="page-card span-6"><h2>Diagnóstico ejecutivo</h2><div id="questions"></div></div><div class="page-card span-6"><h2>Score de madurez</h2><div class="score"><span id="score">0</span>/100</div><p id="scoreText">Activa controles para estimar la oportunidad.</p></div></div></section>
-    <section class="subview" id="roi"><div class="page-grid"><div class="page-card span-6"><h2>ROI / Piloto 90 días</h2><div class="roi-grid"><div class="field"><label>Gasto anual impactable MXN</label><input id="spend" value="250000000"></div><div class="field"><label>Mejora esperada %</label><input id="improve" value="15"></div><div class="field"><label>Inversión piloto/año 1 MXN</label><input id="invest" value="15000000"></div><div class="field"><label>Duración piloto días</label><input id="days" value="90"></div></div></div><div class="page-card span-6"><h2>Resultado estimado</h2><div class="result"><b id="annual">$0</b><span>Ahorro anual estimado</span></div><div class="result"><b id="monthly">$0</b><span>Valor mensual estimado</span></div><div class="result"><b id="payback">0 meses</b><span>Payback estimado</span></div><a class="btn" href="Presentacion_Command_Center_360_IA_Empresarial.pptx" download>Descargar presentación</a></div></div></section>
-  </main>
-</div>
-<script>
-window.COMMAND_CENTER_360_READY=true;
-const examples={general:{name:'Empresa general',selected:'Machote adaptable',copy:'Este machote muestra la estructura mínima de control que puede adaptarse a casi cualquier empresa: dirección, ventas, finanzas, operación, equipo, clientes, sistemas y riesgos.',leak:'Seguimiento comercial débil',leakText:'Reportes tarde · Decisiones sin dueño claro',areas:'Ventas + Finanzas',areasText:'Operaciones · Reportes',hook:'El gancho: el dueño siente que recupera control sin tener que perseguir reportes. La demo debe vender tranquilidad, dinero y velocidad de decisión.'},industrial:{name:'Proveedor industrial',selected:'Ejemplo industrial',copy:'Vista para empresas que venden por cotización, inventario, compras, cobranza y seguimiento comercial. El CEO ve oportunidades, pedidos, márgenes y fugas.',leak:'Cotizaciones sin seguimiento',leakText:'Inventario · Compras · Cobranza lenta',areas:'Ventas + Inventario',areasText:'Finanzas · Compras · Logística',hook:'El dueño ve dónde se pierden cotizaciones y cuánto dinero queda atorado por seguimiento débil o cobranza lenta.'},clinica:{name:'Clínica / salud',selected:'Ejemplo clínica',copy:'Vista para clínicas y servicios médicos: agenda, pacientes, cobranza, expedientes, satisfacción y carga del equipo.',leak:'Agenda y cobranza dispersas',leakText:'Pacientes sin seguimiento · Expedientes incompletos',areas:'Agenda + Cobranza',areasText:'Pacientes · Equipo · Expedientes',hook:'El director ve agenda, cobranza, riesgos operativos y experiencia del paciente sin esperar reportes manuales.'},restaurante:{name:'Restaurante / cadena local',selected:'Ejemplo restaurante',copy:'Vista para restaurantes: ventas por sucursal, inventario, compras, reseñas, servicio, entregas y costos diarios.',leak:'Inventario y margen opacos',leakText:'Compras · Merma · Reseñas · Tiempos de servicio',areas:'Ventas + Inventario',areasText:'Compras · Operación · Reseñas',hook:'El dueño entiende qué sucursal vende, cuál pierde margen y qué problema debe atacar hoy.'},inmobiliaria:{name:'Inmobiliaria / desarrolladora',selected:'Ejemplo inmobiliaria',copy:'Vista para inmobiliarias: leads, ventas/rentas, expedientes, contratos, cobranza, marketing y servicio postventa.',leak:'Leads y expedientes sin control',leakText:'Contratos · Seguimiento · Cobranza · Marketing',areas:'CRM + Documentos',areasText:'Ventas · Legal · Marketing',hook:'El director ve pipeline, contratos, cobranza y oportunidades comerciales en una sola pantalla.'}};
-const roleText={'CEO / Director / Dueño':'Aquí se concentra la visión completa de la empresa: dinero, ventas, operación, equipo, riesgos, alertas y decisiones pendientes.','Gerente General':'Prioridades, responsables, SLA, cuellos de botella y avance semanal por área.','Finanzas':'Cashflow, cobranza, gasto, margen, desviaciones y oportunidades de ahorro.','Ventas':'Leads, cotizaciones, seguimiento, oportunidades calientes, agenda y cierre.','Operaciones':'Tickets, entregas, calidad, proveedores, evidencias y riesgos operativos.','Marketing':'Campañas, contenido, costo por lead, preguntas frecuentes y conversión por canal.','RH':'Carga de trabajo, asistencia, desempeño, cobertura y necesidades del equipo.','Atención Cliente':'FAQs, quejas, satisfacción, tickets y escalamiento humano correcto.','Legal / Documentos':'Contratos, permisos, vencimientos, faltantes, riesgos y aprobaciones.','Sistemas / Datos':'Integraciones, permisos, seguridad, bases de datos y automatizaciones.'};
-function show(id){document.querySelectorAll('.view,.subview').forEach(v=>v.classList.toggle('active',v.id===id));document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===id));window.scrollTo({top:0,behavior:'smooth'});}document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>show(b.dataset.view)));document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();show(b.dataset.jump)}));document.querySelectorAll('[data-role]').forEach(el=>el.addEventListener('click',()=>{const role=el.dataset.role;document.getElementById('inspectorTitle').textContent=role;document.getElementById('inspectorText').textContent=roleText[role]||'KPIs, alertas y oportunidades de automatización por área.';}));
-document.getElementById('exampleSelect').addEventListener('change',e=>{const d=examples[e.target.value]||examples.general;document.getElementById('companyPill').textContent=d.name;document.getElementById('selectedExample').textContent=d.selected;document.getElementById('heroCopy').textContent=d.copy;document.getElementById('leakTitle').textContent=d.leak;document.getElementById('leakText').textContent=d.leakText;document.getElementById('firstAreas').textContent=d.areas;document.getElementById('firstAreasText').textContent=d.areasText;document.getElementById('hookText').textContent=d.hook;});
-const qs=[['¿El dueño ve dinero, ventas y operación diariamente?',20],['¿Hay responsables claros para cada decisión pendiente?',17],['¿Ventas tiene seguimiento automático y medible?',17],['¿Finanzas detecta desviaciones sin esperar cierre?',16],['¿Operación trabaja con SLA visible?',15],['¿Documentos y aprobaciones tienen trazabilidad?',15]];document.getElementById('questions').innerHTML=qs.map(q=>`<div class="diag-q"><label><span>${q[0]}<small>Impacto: ${q[1]} pts</small></span><input class="switch" type="checkbox" data-points="${q[1]}"></label></div>`).join('');function updScore(){let s=[...document.querySelectorAll('.switch:checked')].reduce((a,e)=>a+Number(e.dataset.points),0);document.getElementById('score').textContent=s;document.getElementById('scoreText').textContent=s<40?'Madurez baja: oportunidad clara para vender piloto.':s<75?'Madurez media: integrar datos, alertas y ROI.':'Madurez alta: automatización avanzada y escalamiento.';}document.querySelectorAll('.switch').forEach(e=>e.addEventListener('change',updScore));updScore();
-const spendEl=document.getElementById('spend'),improveEl=document.getElementById('improve'),investEl=document.getElementById('invest');function money(n){return new Intl.NumberFormat('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n||0)}function calc(){let spend=+String(spendEl.value).replace(/[^0-9.]/g,'')||0,imp=(+improveEl.value||0)/100,inv=+String(investEl.value).replace(/[^0-9.]/g,'')||0;let annual=spend*imp,monthly=annual/12,pay=monthly?inv/monthly:0;document.getElementById('annual').textContent=money(annual);document.getElementById('monthly').textContent=money(monthly);document.getElementById('payback').textContent=pay.toFixed(1)+' meses';}[spendEl,improveEl,investEl].forEach(e=>e.addEventListener('input',calc));calc();
-</script>
+            <div class="dashboard-card">
+              <div class="card-head">
+                <div><h2>Pulso por área</h2><p>Estado ejecutivo de cada departamento. El director identifica dónde mirar primero.</p></div>
+                <button class="ghost-btn" data-view-target="areas">Abrir áreas</button>
+              </div>
+              <div class="department-grid" id="departmentPulse"></div>
+            </div>
+          </div>
+
+          <aside class="dashboard-side">
+            <div class="dashboard-card">
+              <div class="card-head"><h2>Decisiones pendientes</h2><p>Lo que requiere autorización o criterio del dueño.</p></div>
+              <div class="decision-list" id="decisionList"></div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="card-head"><h2>Mapa de riesgo</h2><p>Riesgos que pueden costar dinero o control.</p></div>
+              <div class="risk-meter" id="riskMeter"></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="view-areas" class="view" aria-label="Vista por áreas">
+        <div class="area-layout">
+          <aside class="glass-panel area-menu">
+            <div class="panel-content">
+              <div class="eyebrow">Vista operativa</div>
+              <h1>Áreas clave</h1>
+              <p>Este módulo convierte el organigrama en diagnóstico. Cada área muestra puestos sugeridos, KPIs, alertas y automatizaciones posibles.</p>
+              <div class="area-list" id="areaList"></div>
+            </div>
+          </aside>
+
+          <div class="glass-panel area-detail">
+            <div class="panel-content" id="areaDetail"></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-diagnosis" class="view" aria-label="Diagnóstico de madurez empresarial">
+        <div class="diagnosis-grid">
+          <div class="glass-panel diagnosis-panel">
+            <div class="panel-content">
+              <div class="eyebrow">Diagnóstico ejecutivo automático</div>
+              <h1 style="font-size:48px; line-height:.94; letter-spacing:-.055em; margin-top:14px;">Madurez de control empresarial</h1>
+              <p style="color:var(--muted); line-height:1.45; margin-top:12px;">El cliente contesta preguntas rápidas. El sistema devuelve un score, áreas prioritarias y una ruta de implementación.</p>
+              <div class="big-score"><strong id="maturityScore">62</strong><span>Score actual estimado / 100</span></div>
+              <div class="alert-list" id="diagnosisAlerts"></div>
+            </div>
+          </div>
+
+          <div class="glass-panel diagnosis-panel">
+            <div class="panel-content">
+              <div class="card-head"><h2>Preguntas demo</h2><p>Activa/desactiva respuestas para simular el diagnóstico.</p></div>
+              <div class="question-list" id="questionList"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-roi" class="view" aria-label="ROI y piloto">
+        <div class="roi-layout">
+          <div class="glass-panel diagnosis-panel">
+            <div class="panel-content">
+              <div class="eyebrow">ROI simple para vender el piloto</div>
+              <h1 style="font-size:48px; line-height:.94; letter-spacing:-.055em; margin-top:14px;">¿Cuánto cuesta seguir dirigiendo a ciegas?</h1>
+              <p style="color:var(--muted); line-height:1.45; margin-top:12px;">Modelo ejecutivo: si una parte del gasto, ventas perdidas o tiempo operativo se puede mejorar, el Centro de Control debe pagarse con dinero recuperado.</p>
+              <div class="input-group">
+                <div class="input-row"><label for="impactableInput">Monto anual impactable estimado</label><input id="impactableInput" type="number" value="2500000" min="0" step="50000" /></div>
+                <div class="input-row"><label for="savingInput">Mejora esperada (%)</label><input id="savingInput" type="number" value="8" min="0" max="100" step="1" /></div>
+                <div class="input-row"><label for="investmentInput">Inversión piloto estimada</label><input id="investmentInput" type="number" value="180000" min="0" step="10000" /></div>
+              </div>
+              <div class="roi-results" id="roiResults"></div>
+            </div>
+          </div>
+
+          <div class="glass-panel diagnosis-panel">
+            <div class="panel-content">
+              <div class="eyebrow">Ruta 30 / 60 / 90</div>
+              <h1 style="font-size:44px; line-height:.96; letter-spacing:-.05em; margin-top:14px;">Piloto de bajo riesgo para convertir interés en decisión.</h1>
+              <div class="roadmap">
+                <div class="phase"><small>DÍA 1-15</small><h3>Diagnóstico</h3><p>Mapear áreas, responsables, datos disponibles, dolores y dinero en fuga.</p></div>
+                <div class="phase"><small>DÍA 16-35</small><h3>Dashboard demo</h3><p>Construir la primera versión con KPIs, alertas y decisiones críticas para dirección.</p></div>
+                <div class="phase"><small>DÍA 36-70</small><h3>Conexiones</h3><p>Integrar fuentes reales: Excel, CRM, ERP, WhatsApp, formularios o reportes existentes.</p></div>
+                <div class="phase"><small>DÍA 71-90</small><h3>ROI y escala</h3><p>Medir impacto, priorizar automatizaciones y presentar plan de expansión por área.</p></div>
+              </div>
+              <div class="cta-row"><button class="primary-btn" id="copyPitchBtn">Copiar pitch corto</button><button class="ghost-btn" data-view-target="org">Volver al mapa</button></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="tooltip" id="tooltip" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast">Listo</div>
+
+  <script>
+    const areas = [
+      { id: 'finanzas', name: 'Finanzas', type: 'Dinero', status: 'warn', score: 68, desc: 'Flujo de efectivo, utilidad, cobranza, pagos, presupuestos, facturación y salud financiera diaria.', kpis: ['Cashflow', 'Utilidad', 'Cobranza'], roles: ['Director financiero', 'Contador', 'Tesorería', 'Cuentas por cobrar', 'Cuentas por pagar', 'Facturación'], alerts: ['8 facturas vencidas por revisar', 'Flujo proyectado bajo para próximos 15 días', 'Gasto operativo subió 12%'], automation: ['Reporte diario de caja', 'Alertas de cobranza vencida', 'Proyección automática de flujo', 'Autorización digital de pagos'] },
+      { id: 'ventas', name: 'Ventas', type: 'Ingresos', status: 'danger', score: 55, desc: 'Pipeline comercial, cotizaciones, cierres, seguimiento de oportunidades, metas y clientes en riesgo.', kpis: ['Pipeline', 'Cierre', 'Seguimiento'], roles: ['Director comercial', 'Gerente de ventas', 'Ejecutivos', 'CRM', 'Cotizaciones', 'Postventa'], alerts: ['34 cotizaciones sin seguimiento', 'Ventas 9% debajo de meta mensual', 'Cliente grande sin contacto en 12 días'], automation: ['CRM simple', 'Recordatorios de seguimiento', 'Score de oportunidades', 'Alertas de clientes fríos'] },
+      { id: 'marketing', name: 'Marketing', type: 'Demanda', status: 'warn', score: 61, desc: 'Leads, campañas, contenido, reputación, costo por prospecto y conversión a venta real.', kpis: ['Leads', 'CAC', 'Conversión'], roles: ['Marketing manager', 'Performance', 'Contenido', 'Diseño', 'Social media', 'Alianzas'], alerts: ['Costo por lead subió 18%', 'Campaña activa sin medición de venta', 'Contenido pendiente de aprobación'], automation: ['Calendario de contenido', 'Reporte de campañas', 'Alertas de CAC', 'Briefs automáticos'] },
+      { id: 'operaciones', name: 'Operaciones', type: 'Ejecución', status: 'warn', score: 64, desc: 'Capacidad operativa, cumplimiento, tiempos, cuellos de botella, entregas y responsables.', kpis: ['SLA', 'Capacidad', 'Retrasos'], roles: ['Gerente operativo', 'Supervisores', 'Coordinadores', 'Producción / servicio', 'Control de calidad'], alerts: ['3 proyectos con retraso', 'Capacidad semanal al 87%', 'Falta responsable en dos tareas críticas'], automation: ['Tablero operativo', 'Semáforo de retrasos', 'Asignación de responsables', 'Checklist de entrega'] },
+      { id: 'rh', name: 'Recursos Humanos', type: 'Equipo', status: 'ok', score: 74, desc: 'Estructura, asistencia, rotación, vacantes, desempeño, capacitación y clima laboral.', kpis: ['Rotación', 'Vacantes', 'Asistencia'], roles: ['RH manager', 'Reclutamiento', 'Nómina', 'Capacitación', 'Cultura', 'Evaluación'], alerts: ['2 vacantes críticas abiertas', 'Evaluaciones pendientes', 'Riesgo de sobrecarga en operación'], automation: ['Reporte de asistencia', 'Score de desempeño', 'Flujo de onboarding', 'Alertas de rotación'] },
+      { id: 'compras', name: 'Compras', type: 'Abasto', status: 'warn', score: 59, desc: 'Proveedores, órdenes de compra, comparativos, inventario crítico, costos y autorizaciones.', kpis: ['OC', 'Costos', 'Stock'], roles: ['Compras', 'Abastecimiento', 'Proveedores', 'Negociación', 'Autorizaciones'], alerts: ['Proveedor clave sin alternativa', 'Compra urgente sin autorización', 'Costo unitario aumentó 7%'], automation: ['Comparador de proveedores', 'Alertas de stock', 'Flujo de autorización', 'Historial de precios'] },
+      { id: 'logistica', name: 'Logística', type: 'Entrega', status: 'ok', score: 71, desc: 'Rutas, entregas, inventario en tránsito, tiempos, evidencias y costos logísticos.', kpis: ['OTIF', 'Rutas', 'Costo'], roles: ['Coordinador logístico', 'Almacén', 'Choferes', 'Rutas', 'Evidencias'], alerts: ['2 entregas en riesgo', 'Ruta con sobrecosto', 'Evidencias incompletas'], automation: ['Tracking de entregas', 'Checklist de salida', 'Alertas de retraso', 'Control de evidencias'] },
+      { id: 'clientes', name: 'Atención al Cliente', type: 'Retención', status: 'warn', score: 60, desc: 'Tickets, quejas, satisfacción, tiempos de respuesta, renovaciones y clientes en riesgo.', kpis: ['Tickets', 'NPS', 'Respuesta'], roles: ['Soporte', 'Customer success', 'Mesa de ayuda', 'Renovaciones', 'Escalaciones'], alerts: ['5 tickets vencidos', 'Cliente VIP con queja abierta', 'Respuesta promedio subió a 9h'], automation: ['Bandeja de tickets', 'Alertas VIP', 'Encuestas automáticas', 'Resumen de quejas'] },
+      { id: 'tecnologia', name: 'Tecnología / Sistemas', type: 'Infraestructura', status: 'ok', score: 78, desc: 'Herramientas, datos, integraciones, seguridad, accesos, respaldos y automatizaciones.', kpis: ['Sistemas', 'Datos', 'Seguridad'], roles: ['TI', 'Soporte sistemas', 'Datos', 'Automatización', 'Seguridad'], alerts: ['3 accesos sin revisar', 'Respaldo pendiente de validar', 'Sistema crítico sin tablero'], automation: ['Inventario de herramientas', 'Control de accesos', 'Backups verificados', 'Integraciones'] },
+      { id: 'legal', name: 'Legal / Compliance', type: 'Riesgo', status: 'ok', score: 73, desc: 'Contratos, obligaciones, permisos, auditorías, riesgos legales y cumplimiento.', kpis: ['Contratos', 'Permisos', 'Riesgo'], roles: ['Legal', 'Contratos', 'Compliance', 'Auditoría', 'Permisos'], alerts: ['Contrato por vencer en 21 días', 'Política interna sin firma', 'Permiso pendiente de renovar'], automation: ['Calendario legal', 'Alertas de vencimiento', 'Repositorio de contratos', 'Checklist de cumplimiento'] },
+      { id: 'calidad', name: 'Calidad', type: 'Estándar', status: 'ok', score: 76, desc: 'Errores, retrabajos, satisfacción, auditorías, estándares, procesos y mejora continua.', kpis: ['Errores', 'Retrabajo', 'SLA'], roles: ['Calidad', 'Auditoría', 'Mejora continua', 'Documentación', 'Procesos'], alerts: ['2 incidencias repetidas', 'Checklist incompleto', 'Proceso sin dueño asignado'], automation: ['Registro de incidencias', 'Checklist digital', 'Reporte de retrabajo', 'Base de procesos'] },
+      { id: 'bi', name: 'Inteligencia / Reportes', type: 'Visibilidad', status: 'danger', score: 50, desc: 'Reportes ejecutivos, indicadores, tableros, análisis, alertas y verdad única de la empresa.', kpis: ['KPIs', 'Alertas', 'Datos'], roles: ['Analista BI', 'Datos', 'Reportes', 'Dashboard owner', 'Automatizaciones'], alerts: ['Reportes se entregan tarde', 'KPIs no estandarizados', 'Datos viven en archivos separados'], automation: ['Dashboard ejecutivo', 'Alertas automáticas', 'Consolidación de Excel', 'Score semanal por área'] }
+    ];
+
+    const industries = {
+      general: { label: 'Empresa general', pitch: 'Este machote muestra la estructura mínima de control que puede adaptarse a casi cualquier empresa: dirección, ventas, finanzas, operación, equipo, clientes, sistemas y riesgos.', dashboard: 'El dueño ve en minutos lo que antes tenía que perseguir en WhatsApp, Excel, juntas y reportes tardíos.', metrics: ['Ventas mes', 'Flujo 30 días', 'Alertas críticas', 'Decisiones'], values: ['$2.8M', '$740K', '12', '7'] },
+      distribuidora: { label: 'Distribuidora / Comercializadora', pitch: 'Adaptado a empresas con inventario, proveedores, rutas, ventas recurrentes, cobranza y margen por producto.', dashboard: 'Visibilidad diaria de ventas, margen, inventario crítico, cobranza, rutas y clientes sin seguimiento.', metrics: ['Ventas mes', 'Inventario crítico', 'Cobranza vencida', 'Margen'], values: ['$4.6M', '18 SKU', '$620K', '22%'] },
+      constructora: { label: 'Constructora / Servicios técnicos', pitch: 'Adaptado a proyectos, cuadrillas, compras, avances de obra, presupuestos, estimaciones y riesgos de retraso.', dashboard: 'El director ve avance por proyecto, desviaciones de presupuesto, compras urgentes, cobranza y decisiones de obra.', metrics: ['Avance global', 'Sobrecosto', 'Proyectos riesgo', 'CxC'], values: ['71%', '8.4%', '3', '$1.1M'] },
+      restaurante: { label: 'Restaurante / Grupo gastronómico', pitch: 'Adaptado a sucursales, ventas diarias, tickets promedio, costos de insumo, mermas, personal y reseñas.', dashboard: 'El dueño ve ventas por sucursal, margen, mermas, inventario, reputación y operación del día.', metrics: ['Ventas día', 'Ticket prom.', 'Merma', 'Reseñas'], values: ['$86K', '$312', '4.2%', '4.6★'] },
+      clinica: { label: 'Clínica / Salud privada', pitch: 'Adaptado a citas, pacientes, cobranza, médicos, insumos, satisfacción, expedientes y cumplimiento.', dashboard: 'La dirección ve ocupación, ingresos, pacientes pendientes, citas, insumos críticos y experiencia del paciente.', metrics: ['Ocupación', 'Ingresos mes', 'Citas hoy', 'Satisfacción'], values: ['82%', '$1.9M', '46', '91%'] },
+      agencia: { label: 'Agencia / Servicios profesionales', pitch: 'Adaptado a cuentas, proyectos, entregables, horas, rentabilidad por cliente, propuestas y renovaciones.', dashboard: 'El director ve proyectos en riesgo, rentabilidad por cuenta, horas utilizadas, entregas y pipeline comercial.', metrics: ['Revenue mes', 'Proyectos riesgo', 'Utilización', 'Pipeline'], values: ['$1.3M', '5', '76%', '$3.8M'] },
+      musica: { label: 'Música / Management artístico', pitch: 'Adaptado a artistas, lanzamientos, contratos, marketing, DSPs, contenido, logística, regalías y oportunidades.', dashboard: 'La dirección ve lanzamientos, pendientes legales, marketing, DSPs, ingresos, agenda y decisiones por artista.', metrics: ['Lanzamientos', 'Pendientes', 'Campañas', 'Artistas'], values: ['14', '9', '6', '8'] }
+    };
+
+    const diagnosisQuestions = [
+      '¿El director tiene flujo de efectivo actualizado sin pedirlo por WhatsApp?',
+      '¿Existe CRM o seguimiento claro de cotizaciones abiertas?',
+      '¿Cada área tiene KPIs y responsable visible?',
+      '¿Las alertas críticas llegan antes de que el problema explote?',
+      '¿Se conoce la rentabilidad por producto, proyecto, cliente o sucursal?',
+      '¿Los reportes se actualizan automáticamente o siguen siendo manuales?',
+      '¿Existe una lista clara de decisiones pendientes del dueño?',
+      '¿Hay control de accesos, contratos, permisos y vencimientos?'
+    ];
+
+    const state = {
+      industry: 'general',
+      selectedArea: areas[0],
+      diagnosis: [false, false, true, false, false, false, false, true]
+    };
+
+    const $ = (sel) => document.querySelector(sel);
+    const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+    function money(value) {
+      return value.toLocaleString('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 });
+    }
+
+    function statusClass(status) {
+      if (status === 'danger') return 'danger';
+      if (status === 'warn') return 'warn';
+      return '';
+    }
+
+    function statusLabel(status) {
+      if (status === 'danger') return 'Crítico';
+      if (status === 'warn') return 'Atención';
+      return 'Sano';
+    }
+
+    function renderAreaNodes() {
+      const areaNodes = $('#areaNodes');
+      areaNodes.innerHTML = areas.map(area => `
+        <button class="node area" data-node="${area.id}" data-area="${area.name}">
+          <div class="node-head"><span class="node-type">${area.type}</span><span class="status ${statusClass(area.status)}">${statusLabel(area.status)}</span></div>
+          <h3>${area.name}</h3>
+          <p>${area.desc.split(',').slice(0,2).join(',')}.</p>
+          <div class="mini-metrics">${area.kpis.slice(0,2).map(k => `<span>${k}</span>`).join('')}</div>
+        </button>
+      `).join('');
+    }
+
+    function renderInspector(area = null) {
+      const item = area || {
+        name: 'CEO / Director / Dueño',
+        status: 'warn',
+        desc: 'Aquí se concentra la visión completa de la empresa: dinero, ventas, operación, equipo, riesgos, alertas y decisiones pendientes.',
+        alerts: ['7 decisiones requieren criterio del director', '12 alertas activas en áreas críticas', '3 oportunidades de ahorro detectadas'],
+        kpis: ['Dinero', 'Ventas', 'Riesgo']
+      };
+      $('#inspectorTitle').textContent = item.name;
+      $('#inspectorDescription').textContent = item.desc;
+      $('#inspectorStatus').className = `status ${statusClass(item.status || 'warn')}`;
+      $('#inspectorStatus').textContent = statusLabel(item.status || 'warn');
+      $('#inspectorAlerts').innerHTML = item.alerts.map((alert, index) => `<div class="alert-item ${index === 0 && (item.status === 'danger' || item.name.includes('CEO')) ? 'critical' : ''}"><span class="alert-dot"></span><span>${alert}</span></div>`).join('');
+      $('#inspectorHook').textContent = item.name.includes('CEO')
+        ? 'El gancho: el dueño siente que recupera control sin tener que perseguir reportes. La demo debe vender tranquilidad, dinero y velocidad de decisión.'
+        : `Gancho: ${item.name} deja de ser una caja negra. El director ve responsables, números, riesgos y automatizaciones posibles.`;
+    }
+
+    function renderKpis() {
+      const industry = industries[state.industry];
+      const classes = ['good', 'warn', 'danger', 'warn'];
+      $('#kpiGrid').innerHTML = industry.metrics.map((m, i) => `
+        <div class="kpi-card ${classes[i]}">
+          <small>${m}<span>${i === 0 ? 'actual' : i === 1 ? '30d' : i === 2 ? 'hoy' : 'pend.'}</span></small>
+          <strong>${industry.values[i]}</strong>
+          <span>${['Lectura ejecutiva inmediata', 'Tendencia y riesgo', 'Prioridad del día', 'Requiere decisión'][i]}</span>
+        </div>
+      `).join('');
+    }
+
+    function renderDashboard() {
+      const industry = industries[state.industry];
+      $('#dashboardPitch').textContent = industry.dashboard;
+      renderKpis();
+      $('#departmentPulse').innerHTML = areas.slice(0, 9).map(area => `
+        <div class="dept-tile" data-area-tile="${area.id}">
+          <div class="node-head"><span class="node-type">${area.type}</span><span class="status ${statusClass(area.status)}">${statusLabel(area.status)}</span></div>
+          <h3>${area.name}</h3>
+          <p>${area.alerts[0]}</p>
+        </div>
+      `).join('');
+      $('#decisionList').innerHTML = [
+        ['Aprobar plan de recuperación de cobranza vencida', 'Finanzas propone priorizar 8 cuentas con mayor impacto en flujo.', 'critical'],
+        ['Definir descuento máximo para cierre comercial', 'Ventas tiene oportunidades calientes con margen sensible.', 'normal'],
+        ['Autorizar contratación o redistribución operativa', 'Operaciones reporta capacidad alta y riesgo de retraso.', 'normal'],
+        ['Validar tablero semanal de dirección', 'BI propone KPIs únicos por área para evitar reportes contradictorios.', 'critical']
+      ].map(d => `<div class="decision ${d[2] === 'critical' ? 'critical' : ''}"><span class="priority">${d[2] === 'critical' ? 'Alta prioridad' : 'Decisión'}</span><strong>${d[0]}</strong><span>${d[1]}</span></div>`).join('');
+      $('#riskMeter').innerHTML = [
+        ['Ventas sin seguimiento', 82, 'danger'],
+        ['Flujo de efectivo', 68, 'warn'],
+        ['Reportes tardíos', 78, 'danger'],
+        ['Dependencia de personas clave', 55, 'warn'],
+        ['Cumplimiento y contratos', 34, '']
+      ].map(r => `<div class="risk-row"><span>${r[0]}</span><div class="bar ${r[2]}"><span style="width:${r[1]}%"></span></div><span>${r[1]}%</span></div>`).join('');
+    }
+
+    function renderAreaList() {
+      $('#areaList').innerHTML = areas.map(area => `<button class="area-choice ${state.selectedArea.id === area.id ? 'active' : ''}" data-area-choice="${area.id}"><strong>${area.name}</strong><span>${area.type} · ${statusLabel(area.status)} · Score ${area.score}/100</span></button>`).join('');
+    }
+
+    function renderAreaDetail() {
+      const area = state.selectedArea;
+      $('#areaDetail').innerHTML = `
+        <div class="area-detail-head">
+          <div>
+            <div class="eyebrow">${area.type}</div>
+            <h1>${area.name}</h1>
+            <p>${area.desc}</p>
+          </div>
+          <div class="score-ring" style="--score:${area.score}"><strong>${area.score}</strong><span>score</span></div>
+        </div>
+        <div class="area-columns">
+          <div class="dashboard-card"><div class="card-head"><h2>Puestos sugeridos</h2></div><div class="bullet-list">${area.roles.map(x => `<div class="bullet">${x}</div>`).join('')}</div></div>
+          <div class="dashboard-card"><div class="card-head"><h2>Alertas visibles</h2></div><div class="bullet-list">${area.alerts.map(x => `<div class="bullet">${x}</div>`).join('')}</div></div>
+          <div class="dashboard-card"><div class="card-head"><h2>Automatizaciones</h2></div><div class="bullet-list">${area.automation.map(x => `<div class="bullet">${x}</div>`).join('')}</div></div>
+        </div>
+        <div class="dashboard-card" style="margin-top:14px;"><div class="card-head"><h2>Cómo se vende esta área al cliente</h2><p>El objetivo no es mostrar puestos; es mostrar qué puede controlar el dueño.</p></div><p style="color:var(--muted); line-height:1.5;">Con ${area.name}, el director puede ver responsables, indicadores, alertas y decisiones pendientes. Esto ayuda a dejar de operar por memoria, juntas dispersas o mensajes sueltos, y convierte el área en una fuente clara de control y mejora.</p></div>
+      `;
+    }
+
+    function renderDiagnosis() {
+      const onCount = state.diagnosis.filter(Boolean).length;
+      const score = Math.round(34 + (onCount / diagnosisQuestions.length) * 60);
+      $('#maturityScore').textContent = score;
+      $('#questionList').innerHTML = diagnosisQuestions.map((q, i) => `
+        <div class="question"><span>${q}</span><button class="toggle ${state.diagnosis[i] ? 'on' : ''}" data-question="${i}" aria-label="Cambiar respuesta"></button></div>
+      `).join('');
+      const level = score < 55 ? 'critical' : score < 75 ? '' : 'ok';
+      $('#diagnosisAlerts').innerHTML = [
+        score < 70 ? 'Prioridad: crear tablero del CEO con 8-12 KPIs ejecutivos.' : 'Buen punto de partida: se puede avanzar a automatizaciones por área.',
+        'Áreas típicas a diagnosticar primero: Ventas, Finanzas, Operaciones y Reportes.',
+        'Entregable comercial: score, riesgos, oportunidades y piloto 30/60/90.'
+      ].map((x, i) => `<div class="alert-item ${i === 0 ? level : ''}"><span class="alert-dot"></span><span>${x}</span></div>`).join('');
+    }
+
+    function renderRoi() {
+      const impactable = Number($('#impactableInput').value || 0);
+      const saving = Number($('#savingInput').value || 0) / 100;
+      const investment = Number($('#investmentInput').value || 0);
+      const annual = impactable * saving;
+      const monthly = annual / 12;
+      const payback = monthly > 0 ? investment / monthly : 0;
+      const net = annual - investment;
+      $('#roiResults').innerHTML = [
+        ['Ahorro anual potencial', money(annual), 'good'],
+        ['Valor mensual', money(monthly), 'good'],
+        ['Payback estimado', `${payback.toFixed(1)} meses`, payback <= 6 ? 'good' : 'warn'],
+        ['Beneficio neto año 1', money(net), net >= 0 ? 'good' : 'danger']
+      ].map(r => `<div class="kpi-card ${r[2]}"><small>${r[0]}<span>demo</span></small><strong>${r[1]}</strong><span>Estimación editable para conversación ejecutiva</span></div>`).join('');
+    }
+
+    function showView(viewName) {
+      $$('.view').forEach(v => v.classList.remove('active'));
+      $(`#view-${viewName}`).classList.add('active');
+      $$('.nav-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.view === viewName));
+      localStorage.setItem('cc360-view', viewName);
+    }
+
+    function setIndustry(value) {
+      state.industry = value;
+      const industry = industries[value];
+      $('#industryTag').textContent = industry.label;
+      $('#industryPitch').textContent = industry.pitch;
+      renderDashboard();
+      localStorage.setItem('cc360-industry', value);
+    }
+
+    function showToast(text) {
+      const toast = $('#toast');
+      toast.textContent = text;
+      toast.classList.add('visible');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => toast.classList.remove('visible'), 2200);
+    }
+
+    function showTooltip(area, x, y) {
+      const tooltip = $('#tooltip');
+      tooltip.innerHTML = `<h3>${area.name}</h3><p>${area.desc}</p><div class="mini-metrics">${area.kpis.map(k => `<span>${k}</span>`).join('')}</div>`;
+      const margin = 18;
+      const left = Math.min(x + 18, window.innerWidth - 378);
+      const top = Math.min(y + 18, window.innerHeight - 210);
+      tooltip.style.left = `${Math.max(margin, left)}px`;
+      tooltip.style.top = `${Math.max(margin, top)}px`;
+      tooltip.classList.add('visible');
+    }
+
+    function hideTooltip() { $('#tooltip').classList.remove('visible'); }
+
+    function initEvents() {
+      document.addEventListener('click', (e) => {
+        const nav = e.target.closest('.nav-btn');
+        if (nav) showView(nav.dataset.view);
+
+        const target = e.target.closest('[data-view-target]');
+        if (target) showView(target.dataset.viewTarget);
+
+        const node = e.target.closest('.node');
+        if (node) {
+          const id = node.dataset.node;
+          if (node.dataset.action === 'dashboard') {
+            showView('dashboard');
+            showToast('Entrando al Centro de Control Ejecutivo');
+            return;
+          }
+          const area = areas.find(a => a.id === id || a.name === node.dataset.area);
+          if (area) {
+            state.selectedArea = area;
+            renderAreaList();
+            renderAreaDetail();
+            showView('areas');
+          }
+        }
+
+        const choice = e.target.closest('[data-area-choice]');
+        if (choice) {
+          state.selectedArea = areas.find(a => a.id === choice.dataset.areaChoice) || areas[0];
+          renderAreaList();
+          renderAreaDetail();
+        }
+
+        const tile = e.target.closest('[data-area-tile]');
+        if (tile) {
+          state.selectedArea = areas.find(a => a.id === tile.dataset.areaTile) || areas[0];
+          renderAreaList();
+          renderAreaDetail();
+          showView('areas');
+        }
+
+        const toggle = e.target.closest('[data-question]');
+        if (toggle) {
+          const i = Number(toggle.dataset.question);
+          state.diagnosis[i] = !state.diagnosis[i];
+          renderDiagnosis();
+        }
+      });
+
+      document.addEventListener('mousemove', (e) => {
+        const node = e.target.closest('.node');
+        if (!node) { hideTooltip(); return; }
+        const id = node.dataset.node;
+        const area = id === 'ceo'
+          ? { name: 'CEO / Director / Dueño', desc: 'Entrada principal al dashboard. Aquí vive la lectura 360: dinero, ventas, operación, riesgos, equipo y decisiones pendientes.', kpis: ['12 alertas', '7 decisiones', 'ROI'] }
+          : areas.find(a => a.id === id || a.name === node.dataset.area);
+        if (area) showTooltip(area, e.clientX, e.clientY);
+      });
+
+      document.addEventListener('mouseover', (e) => {
+        const node = e.target.closest('.node');
+        if (!node) return;
+        const id = node.dataset.node;
+        const area = id === 'ceo' ? null : areas.find(a => a.id === id || a.name === node.dataset.area);
+        renderInspector(area);
+      });
+
+      $('#industrySelect').addEventListener('change', e => setIndustry(e.target.value));
+      $('#openDashboardBtn').addEventListener('click', () => showView('dashboard'));
+      $('#showDiagnosisBtn').addEventListener('click', () => showView('diagnosis'));
+      ['impactableInput','savingInput','investmentInput'].forEach(id => $(`#${id}`).addEventListener('input', renderRoi));
+      $('#copyPitchBtn').addEventListener('click', async () => {
+        const pitch = 'Command Center 360 convierte la empresa en una pantalla de control para el dueño: ventas, dinero, operación, riesgos, equipo y decisiones pendientes en un solo lugar. El piloto de 90 días identifica fugas de dinero, automatiza reportes y mide ROI real antes de escalar.';
+        try { await navigator.clipboard.writeText(pitch); showToast('Pitch copiado'); }
+        catch { showToast(pitch); }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === '1') showView('org');
+        if (e.key === '2') showView('dashboard');
+        if (e.key === '3') showView('areas');
+        if (e.key === '4') showView('diagnosis');
+        if (e.key === '5') showView('roi');
+      });
+    }
+
+    function init() {
+      renderAreaNodes();
+      renderInspector(null);
+      renderDashboard();
+      renderAreaList();
+      renderAreaDetail();
+      renderDiagnosis();
+      renderRoi();
+      initEvents();
+      const savedIndustry = localStorage.getItem('cc360-industry');
+      if (savedIndustry && industries[savedIndustry]) {
+        $('#industrySelect').value = savedIndustry;
+        setIndustry(savedIndustry);
+      }
+      const savedView = localStorage.getItem('cc360-view');
+      if (savedView && $(`#view-${savedView}`)) showView(savedView);
+      window.__cc360Ready = true;
+      window.COMMAND_CENTER_360_READY = true;
+    }
+
+    init();
+  </script>
 </body>
 </html>
