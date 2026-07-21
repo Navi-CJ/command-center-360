@@ -656,6 +656,138 @@
 
     body[data-industry="fivi"] .map-title h1 { line-height: .98; padding-bottom: 8px; }
 
+
+    body[data-industry="fivi"][data-fivi-theme="day"] {
+      --accent: #f53842;
+      --accent-2: #ff5a63;
+      --ink: #092f45;
+      --soft: #27475a;
+      --muted: #667887;
+      --dark: #f7f8fb;
+      --panel: rgba(255,255,255,.96);
+      --panel-2: rgba(255,255,255,.92);
+      --line: rgba(9,47,69,.12);
+      --line-strong: rgba(245,56,66,.38);
+      --ok: #11a66a;
+      background: radial-gradient(circle at 12% 0%, rgba(245,56,66,.10), transparent 28%), linear-gradient(180deg, #ffffff 0%, #f4f7fa 52%, #eef3f6 100%);
+      color: #092f45;
+    }
+    body[data-industry="fivi"][data-fivi-theme="day"] .workspace { background: linear-gradient(180deg, rgba(0,56,79,.035), transparent 35%), #f7f8fb; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .topbar { background: rgba(255,255,255,.97); border-bottom-color: rgba(245,56,66,.30); box-shadow: 0 14px 34px rgba(9,47,69,.08); color: #092f45; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .brand strong,
+    body[data-industry="fivi"][data-fivi-theme="day"] h1,
+    body[data-industry="fivi"][data-fivi-theme="day"] h2,
+    body[data-industry="fivi"][data-fivi-theme="day"] h3,
+    body[data-industry="fivi"][data-fivi-theme="day"] .card-head h2,
+    body[data-industry="fivi"][data-fivi-theme="day"] .inspector h2 { color:#073248; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .brand span,
+    body[data-industry="fivi"][data-fivi-theme="day"] p,
+    body[data-industry="fivi"][data-fivi-theme="day"] .card-head p,
+    body[data-industry="fivi"][data-fivi-theme="day"] .inspector p { color:#607483; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .nav,
+    body[data-industry="fivi"][data-fivi-theme="day"] .industry-select,
+    body[data-industry="fivi"][data-fivi-theme="day"] .pill,
+    body[data-industry="fivi"][data-fivi-theme="day"] .command-badge { background:#fff; color:#073248; border-color:rgba(245,56,66,.28); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .nav button { color:#607483; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .nav button.active { color:#fff; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .glass-panel,
+    body[data-industry="fivi"][data-fivi-theme="day"] .dashboard-card,
+    body[data-industry="fivi"][data-fivi-theme="day"] .hero-dashboard,
+    body[data-industry="fivi"][data-fivi-theme="day"] .inspector,
+    body[data-industry="fivi"][data-fivi-theme="day"] .node,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-panel,
+    body[data-industry="fivi"][data-fivi-theme="day"] .area-detail,
+    body[data-industry="fivi"][data-fivi-theme="day"] .diagnostic-card,
+    body[data-industry="fivi"][data-fivi-theme="day"] .roi-panel { background: radial-gradient(circle at 12% 0%, rgba(245,56,66,.07), transparent 34%), #ffffff; border-color: rgba(9,47,69,.10); box-shadow: 0 20px 55px rgba(9,47,69,.08); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .hero-dashboard,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-command-card { background: radial-gradient(circle at 0% 0%, rgba(245,56,66,.10), transparent 34%), linear-gradient(180deg,#fff,#f7fafc); border-color: rgba(245,56,66,.26); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-logo-box,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-card-head img { background:#073248; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-brand-strip { background: linear-gradient(135deg, rgba(245,56,66,.10), rgba(255,255,255,.94)), #fff; border-color: rgba(245,56,66,.24); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-brand-copy strong,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-metric strong,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-product-card strong,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-event strong,
+    body[data-industry="fivi"][data-fivi-theme="day"] .decision strong,
+    body[data-industry="fivi"][data-fivi-theme="day"] .risk-row strong { color:#073248; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-brand-copy p,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-metric span,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-product-card span,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-event span,
+    body[data-industry="fivi"][data-fivi-theme="day"] .decision span,
+    body[data-industry="fivi"][data-fivi-theme="day"] .risk-row span { color:#607483; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-metric,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-product-card,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-event,
+    body[data-industry="fivi"][data-fivi-theme="day"] .decision,
+    body[data-industry="fivi"][data-fivi-theme="day"] .risk-row,
+    body[data-industry="fivi"][data-fivi-theme="day"] .question,
+    body[data-industry="fivi"][data-fivi-theme="day"] .modal-card { background:#fff; border-color:rgba(9,47,69,.10); color:#073248; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-tab-legend { background:#fff; color:#607483; border-color:rgba(245,56,66,.24); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .metric-orb,
+    body[data-industry="fivi"][data-fivi-theme="day"] .ceo-node { background:linear-gradient(135deg,#073248,#0a4d67); color:#fff; }
+
+    .fivi-theme-toggle { display:inline-flex; align-items:center; gap:6px; border:1px solid rgba(245,56,66,.34); background:rgba(245,56,66,.10); color:#fff; border-radius:999px; padding:5px; min-width:154px; }
+    .fivi-theme-toggle button { border:0; cursor:pointer; border-radius:999px; padding:7px 10px; color:#b7c4d7; background:transparent; font:900 10px var(--mono); letter-spacing:.06em; text-transform:uppercase; transition:.2s ease; }
+    .fivi-theme-toggle button.active { background:#f53842; color:#fff; box-shadow:0 10px 24px rgba(245,56,66,.20); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-theme-toggle { background:#fff; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-theme-toggle button { color:#607483; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-theme-toggle button.active { color:#fff; }
+    body[data-industry="fivi"] .fivi-theme-toggle.fivi-only { display:inline-flex !important; }
+
+    .fivi-map-card { margin-top:14px; padding:14px; }
+    .fivi-map-head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:12px; }
+    .fivi-map-head h3 { color:#fff; font-size:16px; letter-spacing:-.025em; }
+    .fivi-map-head p { color:#aebbd1; max-width:620px; font-size:12px; line-height:1.35; margin-top:4px; }
+    .fivi-map-status { display:flex; gap:7px; flex-wrap:wrap; justify-content:flex-end; }
+    .fivi-map-status span { border:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.05); color:#d8e3f2; border-radius:999px; padding:6px 8px; font:900 10px var(--mono); }
+    .fivi-map-wrap { display:grid; grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr); gap:12px; }
+    .fivi-satellite-map { position:relative; min-height:360px; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.10); background: radial-gradient(circle at 18% 18%, rgba(63,126,98,.24) 0 7%, transparent 8%), radial-gradient(circle at 70% 62%, rgba(137,91,46,.24) 0 8%, transparent 9%), radial-gradient(circle at 78% 16%, rgba(33,96,78,.20) 0 5%, transparent 6%), linear-gradient(135deg, rgba(12,39,54,.98), rgba(16,54,47,.96)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.05); }
+    .fivi-satellite-map::before { content:""; position:absolute; inset:-20%; background: linear-gradient(30deg, transparent 0 45%, rgba(255,255,255,.10) 46% 47%, transparent 48% 100%), linear-gradient(115deg, transparent 0 48%, rgba(245,56,66,.18) 49% 50%, transparent 51% 100%), repeating-linear-gradient(0deg, rgba(255,255,255,.03) 0 1px, transparent 1px 44px), repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 1px, transparent 1px 48px); transform:rotate(-3deg); opacity:.72; pointer-events:none; }
+    .fivi-satellite-map::after { content:"Hermosillo / clientes industriales · mapa satelital simulado"; position:absolute; left:14px; bottom:12px; border:1px solid rgba(255,255,255,.14); border-radius:999px; padding:7px 10px; color:#cbd7e8; background:rgba(2,9,17,.55); font:900 10px var(--mono); letter-spacing:.06em; text-transform:uppercase; backdrop-filter: blur(8px); }
+    .fivi-map-zone { position:absolute; border:1px solid rgba(255,255,255,.12); background:rgba(255,255,255,.05); border-radius:18px; color:rgba(255,255,255,.65); padding:8px; font:900 10px var(--mono); letter-spacing:.06em; text-transform:uppercase; }
+    .fivi-unit-pin { --pin-color:#f53842; position:absolute; left:var(--x); top:var(--y); transform:translate(-50%,-50%); z-index:2; display:grid; place-items:center; width:28px; height:28px; border-radius:999px; background:var(--pin-color); color:#fff; font:900 11px var(--mono); box-shadow:0 0 0 6px rgba(245,56,66,.15), 0 0 26px rgba(245,56,66,.55); border:2px solid rgba(255,255,255,.80); animation:fiviPing 2.8s infinite ease-in-out; }
+    .fivi-unit-pin.ok { --pin-color:#18c989; box-shadow:0 0 0 6px rgba(24,201,137,.15), 0 0 22px rgba(24,201,137,.45); }
+    .fivi-unit-pin.warn { --pin-color:#ffb13b; box-shadow:0 0 0 6px rgba(255,177,59,.15), 0 0 22px rgba(255,177,59,.45); }
+    .fivi-unit-pin.critical { --pin-color:#f53842; }
+    .fivi-unit-pin::after { content:attr(data-label); position:absolute; left:34px; top:50%; transform:translateY(-50%); white-space:nowrap; border:1px solid rgba(255,255,255,.12); background:rgba(4,12,24,.72); color:#f4f7fb; border-radius:999px; padding:5px 7px; font:900 9px var(--mono); letter-spacing:.04em; backdrop-filter: blur(8px); }
+    @keyframes fiviPing { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.08)} }
+    .fivi-map-sidebar { display:grid; gap:8px; align-content:start; }
+    .fivi-unit-row { border:1px solid rgba(255,255,255,.09); background:rgba(255,255,255,.04); border-radius:14px; padding:10px; display:grid; grid-template-columns:1fr auto; gap:8px; color:#d8e3f2; }
+    .fivi-unit-row strong { color:#fff; font-size:12px; line-height:1.2; }
+    .fivi-unit-row span { display:block; color:#aebbd1; font-size:11px; line-height:1.28; margin-top:4px; }
+    .fivi-unit-row em { font-style:normal; align-self:start; border-radius:999px; padding:5px 7px; font:900 9px var(--mono); letter-spacing:.06em; text-transform:uppercase; background:rgba(255,255,255,.07); color:#d8e3f2; }
+    .fivi-unit-row.ok em { color:#18c989; }
+    .fivi-unit-row.warn em { color:#ffb13b; }
+    .fivi-unit-row.critical em { color:#ff5a63; }
+
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-map-head h3 { color:#073248; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-map-head p { color:#607483; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-map-status span,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-unit-row { background:#fff; border-color:rgba(9,47,69,.10); color:#073248; box-shadow:0 10px 26px rgba(9,47,69,.06); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-map-status span,
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-unit-row strong { color:#073248; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-unit-row span { color:#607483; }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-satellite-map { border-color:rgba(9,47,69,.12); background: radial-gradient(circle at 18% 18%, rgba(108,166,116,.32) 0 7%, transparent 8%), radial-gradient(circle at 70% 62%, rgba(210,164,104,.28) 0 8%, transparent 9%), radial-gradient(circle at 78% 16%, rgba(100,169,143,.28) 0 5%, transparent 6%), linear-gradient(135deg, #eaf2ed, #dfeadf 48%, #d4e7f0 100%); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-satellite-map::before { background: linear-gradient(30deg, transparent 0 45%, rgba(9,47,69,.14) 46% 47%, transparent 48% 100%), linear-gradient(115deg, transparent 0 48%, rgba(245,56,66,.18) 49% 50%, transparent 51% 100%), repeating-linear-gradient(0deg, rgba(9,47,69,.05) 0 1px, transparent 1px 44px), repeating-linear-gradient(90deg, rgba(9,47,69,.045) 0 1px, transparent 1px 48px); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-satellite-map::after { color:#073248; background:rgba(255,255,255,.80); border-color:rgba(9,47,69,.12); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-map-zone { color:rgba(9,47,69,.62); background:rgba(255,255,255,.38); border-color:rgba(9,47,69,.12); }
+    body[data-industry="fivi"][data-fivi-theme="day"] .fivi-unit-pin::after { background:rgba(255,255,255,.88); border-color:rgba(9,47,69,.12); color:#073248; }
+
+    body[data-industry="fivi"] .fivi-satellite-map::before { inset:0; transform:none; }
+    body[data-industry="fivi"] .fivi-unit-pin::after { display:none; }
+
+    @media (max-width: 1220px) {
+      .fivi-map-wrap { grid-template-columns:1fr; }
+      .fivi-map-status { justify-content:flex-start; }
+    }
+    @media (max-width: 760px) {
+      .fivi-theme-toggle { width:100%; justify-content:center; margin-left:0; margin-top:8px; }
+      .fivi-satellite-map { min-height:300px; }
+      .fivi-unit-pin::after { display:none; }
+      .fivi-map-head { flex-direction:column; }
+    }
+
     .fivi-only { display: none !important; }
     body[data-industry="fivi"] .fivi-only { display: block !important; }
 
@@ -1233,6 +1365,10 @@
           </select>
         </div>
         <div class="pill" id="liveDemoPill"><span class="pulse-dot"></span> Demo vivo</div>
+        <div class="fivi-theme-toggle fivi-only" id="fiviThemeToggle" role="group" aria-label="Versión visual FIVI">
+          <button type="button" data-fivi-theme="night" class="active">Noche</button>
+          <button type="button" data-fivi-theme="day">Día</button>
+        </div>
       </div>
     </header>
 
@@ -1373,6 +1509,19 @@
                 <img src="https://mlzg0olxredp.i.optimole.com/w:600/h:321/q:mauto/f:best/https://fivi.com.mx/wp-content/uploads/2021/07/FIVI-RojoBlanco-01.png" alt="FIVI Industrial" />
               </div>
               <div class="fivi-metrics" id="fiviLiveMetrics"></div>
+              <div class="fivi-panel fivi-map-card" id="fiviRentalMapCard">
+                <div class="fivi-map-head">
+                  <div>
+                    <h3>Mapa satelital de unidades rentadas</h3>
+                    <p>Simulación de localización en tiempo real para equipos FIVI en clientes industriales: renta activa, servicio requerido, batería, SLA y próxima acción.</p>
+                  </div>
+                  <div class="fivi-map-status" id="fiviMapStatus"></div>
+                </div>
+                <div class="fivi-map-wrap">
+                  <div class="fivi-satellite-map" id="fiviRentalMap" aria-label="Mapa simulado de unidades rentadas FIVI"></div>
+                  <div class="fivi-map-sidebar" id="fiviUnitList"></div>
+                </div>
+              </div>
               <div class="fivi-catalog-grid" id="fiviCatalogGrid"></div>
               <div class="fivi-flow-grid">
                 <div class="fivi-panel"><h3>Flujo FIVI simulado</h3><div id="fiviFlowGrid"></div></div>
@@ -1540,6 +1689,22 @@
       ['Lead industrial', 78], ['Cotización', 66], ['Renta / venta', 58], ['Orden servicio', 74], ['Refacciones', 53], ['Entrega / maniobra', 82], ['Factura / cobranza', 61], ['Reporte CEO', 88]
     ];
 
+
+    const fiviRentalUnits = [
+      { id: 'F-018', label: 'M1', unit: 'Manitou M-X · Montacargas', client: 'Parque Industrial Norte', loc: 'Hermosillo norte', x: 24, y: 30, status: 'ok', battery: 86, eta: 'Renta activa · 18 días restantes' },
+      { id: 'F-026', label: 'R2', unit: 'Raymond Reach · Almacén', client: 'CEDIS alimentos', loc: 'Zona poniente', x: 58, y: 46, status: 'warn', battery: 42, eta: 'Servicio preventivo sugerido' },
+      { id: 'F-031', label: 'H3', unit: 'Hyster combustión · Patio', client: 'Metal mecánica', loc: 'Corredor industrial', x: 72, y: 68, status: 'critical', battery: 28, eta: 'SLA en riesgo · técnico requerido' },
+      { id: 'F-044', label: 'G4', unit: 'Genie plataforma · Altura', client: 'Obra nave industrial', loc: 'Salida a Guaymas', x: 40, y: 70, status: 'ok', battery: 74, eta: 'Maniobra confirmada mañana' },
+      { id: 'F-052', label: 'T5', unit: 'Toyota eléctrico · Producción', client: 'Manufactura automotriz', loc: 'Zona sur', x: 82, y: 34, status: 'warn', battery: 51, eta: 'Contrato por renovar en 6 días' },
+      { id: 'F-063', label: 'C6', unit: 'Crown orderpicker · Picking', client: 'Operador logístico', loc: 'Centro logístico', x: 35, y: 52, status: 'ok', battery: 91, eta: 'Operando normal' }
+    ];
+
+    const fiviMapZones = [
+      { label: 'FIVI base', x: 8, y: 10, w: 24, h: 14 },
+      { label: 'CEDIS', x: 49, y: 39, w: 22, h: 16 },
+      { label: 'Naves', x: 66, y: 59, w: 24, h: 18 }
+    ];
+
     function currentAreas() {
       return state.industry === 'fivi' ? fiviAreas : areas;
     }
@@ -1571,7 +1736,8 @@
       industry: 'general',
       selectedArea: areas[0],
       diagnosis: [false, false, true, false, false, false, false, true],
-      liveTick: 0
+      liveTick: 0,
+      fiviTheme: localStorage.getItem('cc360-fivi-theme') || 'night'
     };
 
     const $ = (sel) => document.querySelector(sel);
@@ -1606,6 +1772,41 @@
       `).join('');
     }
 
+
+
+    function applyFiviTheme(theme = state.fiviTheme) {
+      state.fiviTheme = theme === 'day' ? 'day' : 'night';
+      document.body.dataset.fiviTheme = state.fiviTheme;
+      $$('#fiviThemeToggle button').forEach(btn => btn.classList.toggle('active', btn.dataset.fiviTheme === state.fiviTheme));
+      try { localStorage.setItem('cc360-fivi-theme', state.fiviTheme); } catch (_) {}
+    }
+
+    function renderFiviRentalMap() {
+      const map = $('#fiviRentalMap');
+      const list = $('#fiviUnitList');
+      const status = $('#fiviMapStatus');
+      if (!map || !list || !status) return;
+      const t = state.liveTick;
+      status.innerHTML = [
+        `${fiviRentalUnits.length} unidades rentadas`,
+        `${fiviRentalUnits.filter(u => u.status === 'warn').length} alertas preventivas`,
+        `${fiviRentalUnits.filter(u => u.status === 'critical').length} SLA crítico`,
+        'GPS simulado · 2.6s'
+      ].map(v => `<span>${v}</span>`).join('');
+      map.innerHTML = fiviMapZones.map(z => `<div class="fivi-map-zone" style="left:${z.x}%;top:${z.y}%;width:${z.w}%;height:${z.h}%">${z.label}</div>`).join('') +
+        fiviRentalUnits.map((u, i) => {
+          const driftX = Math.sin((t + i) / 2.2) * 1.3;
+          const driftY = Math.cos((t + i * 2) / 2.6) * 1.1;
+          const x = Math.max(7, Math.min(93, u.x + driftX));
+          const y = Math.max(9, Math.min(88, u.y + driftY));
+          return `<button class="fivi-unit-pin ${u.status}" style="--x:${x.toFixed(1)}%;--y:${y.toFixed(1)}%;animation-delay:${(i*.22).toFixed(2)}s" data-label="${u.id}" aria-label="${u.id} ${u.unit} en ${u.client}">${u.label}</button>`;
+        }).join('');
+      list.innerHTML = fiviRentalUnits.map((u, i) => {
+        const battery = Math.max(12, Math.min(98, u.battery + Math.round(Math.sin((t+i)/2)*5)));
+        const label = u.status === 'critical' ? 'Crítico' : u.status === 'warn' ? 'Revisar' : 'OK';
+        return `<div class="fivi-unit-row ${u.status}"><div><strong>${u.id} · ${u.unit}</strong><span>${u.client} · ${u.loc}<br>Batería/uso ${battery}% · ${u.eta}</span></div><em>${label}</em></div>`;
+      }).join('');
+    }
     function renderInspector(area = null) {
       const item = area || {
         name: 'CEO / Director / Dueño',
@@ -1648,6 +1849,7 @@
       panel.classList.toggle('hidden', !isFivi);
       const pill = $('#liveDemoPill');
       if (pill && isFivi) pill.innerHTML = '<span class="pulse-dot"></span> FIVI interno';
+      if (isFivi) applyFiviTheme(state.fiviTheme);
       if (!isFivi) return;
       const snap = getFiviSnapshot();
       const hh = String(7 + Math.floor((state.liveTick * 5) % 12)).padStart(2, '0');
@@ -1663,6 +1865,7 @@
         const minute = String((Number(mm) + i * 4) % 60).padStart(2, '0');
         return `<div class="fivi-event ${ev.type}"><time>${hh}:${minute}</time><div><strong>${ev.area} · ${ev.action}</strong><span>${ev.impact}</span></div></div>`;
       }).join('');
+      renderFiviRentalMap();
     }
 
     const generalLiveEvents = [
@@ -1885,6 +2088,7 @@
       const activeAreas = currentAreas();
       if (!activeAreas.some(a => a.id === state.selectedArea.id)) state.selectedArea = activeAreas[0];
       document.body.dataset.industry = state.industry;
+      applyFiviTheme(state.fiviTheme);
       ensureFiviLegends();
       renderAreaNodes();
       renderInspector(null);
@@ -1936,6 +2140,13 @@
 
         const target = e.target.closest('[data-view-target]');
         if (target) showView(target.dataset.viewTarget);
+
+        const themeBtn = e.target.closest('[data-fivi-theme]');
+        if (themeBtn) {
+          applyFiviTheme(themeBtn.dataset.fiviTheme);
+          renderFiviSimulation();
+          showToast(`Versión FIVI ${state.fiviTheme === 'day' ? 'Día' : 'Noche'} activada`);
+        }
 
         const node = e.target.closest('.node');
         if (node) {
